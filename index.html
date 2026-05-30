@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$PEPE - The Green King of Memes</title>
+    <title>$KITTY - The Cutest Meme Token on Solana</title>
     <style>
         * {
             margin: 0;
@@ -13,452 +13,405 @@
 
         body {
             font-family: 'Comic Sans MS', 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            background: linear-gradient(135deg, #0a0a1f 0%, #1a1a3e 50%, #2a1a4e 100%);
             color: #fff;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            padding: 20px 0;
+        .stars {
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
-            background: rgba(10, 14, 39, 0.9);
-            backdrop-filter: blur(10px);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 2em;
-            font-weight: bold;
-            color: #00ff88;
-            text-shadow: 0 0 20px #00ff88;
-            animation: glow 2s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 20px #00ff88, 0 0 30px #00ff88; }
-            50% { text-shadow: 0 0 30px #00ff88, 0 0 50px #00ff88; }
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .hero::before {
-            content: '';
+        .star {
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0,255,136,0.2) 0%, transparent 70%);
+            background: white;
             border-radius: 50%;
-            animation: pulse 3s ease-in-out infinite;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.8; }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        .hero-content {
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        header {
             position: relative;
-            z-index: 1;
+            padding: 20px;
+            text-align: center;
+            z-index: 10;
         }
 
-        .hero h1 {
-            font-size: 5em;
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            z-index: 10;
+        }
+
+        .logo {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 30px;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 105, 180, 0.6));
+        }
+
+        h1 {
+            font-size: 5rem;
             margin-bottom: 20px;
-            color: #00ff88;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            animation: slideDown 1s ease-out;
+            background: linear-gradient(45deg, #ff6ec7, #ffd700, #7fff00, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow 3s linear infinite;
+            text-shadow: 0 0 30px rgba(255, 110, 199, 0.5);
         }
 
-        @keyframes slideDown {
-            from { transform: translateY(-100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .hero p {
-            font-size: 1.8em;
+        .tagline {
+            font-size: 1.8rem;
             margin-bottom: 40px;
-            color: #fff;
-            animation: slideUp 1s ease-out 0.3s backwards;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .pepe-emoji {
-            font-size: 8em;
-            display: block;
-            margin: 20px 0;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-30px); }
+            color: #ffd700;
+            animation: pulse 2s infinite;
         }
 
         .cta-buttons {
             display: flex;
             gap: 20px;
-            justify-content: center;
             flex-wrap: wrap;
-            animation: fadeIn 1s ease-out 0.6s backwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            justify-content: center;
+            margin-bottom: 50px;
         }
 
         .btn {
-            padding: 15px 40px;
-            font-size: 1.2em;
+            padding: 18px 40px;
+            font-size: 1.2rem;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
             font-weight: bold;
-            text-transform: uppercase;
+            transition: all 0.3s;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover:before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #00ff88 0%, #00cc6f 100%);
-            color: #0a0e27;
-            box-shadow: 0 5px 20px rgba(0,255,136,0.4);
+            background: linear-gradient(135deg, #ff6ec7 0%, #ff1493 100%);
+            color: white;
+            box-shadow: 0 5px 25px rgba(255, 20, 147, 0.5);
         }
 
         .btn-primary:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,255,136,0.6);
+            box-shadow: 0 10px 35px rgba(255, 20, 147, 0.7);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: #00ff88;
-            border: 2px solid #00ff88;
+            background: linear-gradient(135deg, #00d4ff 0%, #0080ff 100%);
+            color: white;
+            box-shadow: 0 5px 25px rgba(0, 128, 255, 0.5);
         }
 
         .btn-secondary:hover {
-            background: #00ff88;
-            color: #0a0e27;
             transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(0, 128, 255, 0.7);
+        }
+
+        .btn-tertiary {
+            background: linear-gradient(135deg, #7fff00 0%, #32cd32 100%);
+            color: white;
+            box-shadow: 0 5px 25px rgba(127, 255, 0, 0.5);
+        }
+
+        .btn-tertiary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(127, 255, 0, 0.7);
         }
 
         section {
-            padding: 100px 0;
             position: relative;
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 10;
+            animation: slideIn 0.8s ease-out;
         }
 
         h2 {
-            font-size: 3em;
+            font-size: 3rem;
             text-align: center;
-            margin-bottom: 60px;
-            color: #00ff88;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, #ff6ec7, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .tokenomics {
-            background: rgba(255,255,255,0.02);
+        .about-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 2px solid rgba(255, 110, 199, 0.3);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
         .tokenomics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
+            margin-top: 40px;
         }
 
         .token-card {
-            background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,255,136,0.05) 100%);
-            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 30px;
             border-radius: 20px;
-            border: 2px solid rgba(0,255,136,0.3);
+            border: 2px solid rgba(255, 110, 199, 0.3);
+            transition: all 0.3s;
             text-align: center;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out backwards;
-        }
-
-        .token-card:nth-child(1) { animation-delay: 0.1s; }
-        .token-card:nth-child(2) { animation-delay: 0.2s; }
-        .token-card:nth-child(3) { animation-delay: 0.3s; }
-        .token-card:nth-child(4) { animation-delay: 0.4s; }
-
-        @keyframes fadeInUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
 
         .token-card:hover {
             transform: translateY(-10px);
-            border-color: #00ff88;
-            box-shadow: 0 10px 40px rgba(0,255,136,0.3);
+            border-color: #ff6ec7;
+            box-shadow: 0 15px 50px rgba(255, 110, 199, 0.4);
         }
 
         .token-card h3 {
-            font-size: 1.5em;
-            color: #00ff88;
+            font-size: 1.8rem;
             margin-bottom: 15px;
+            color: #ffd700;
         }
 
         .token-card p {
-            font-size: 2em;
-            font-weight: bold;
+            font-size: 1.1rem;
+            color: #ccc;
         }
 
         .roadmap {
-            background: rgba(0,0,0,0.2);
-        }
-
-        .roadmap-container {
             position: relative;
-            max-width: 800px;
-            margin: 0 auto;
+            padding-left: 50px;
         }
 
         .roadmap-item {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 50px;
-            animation: fadeInLeft 0.8s ease-out backwards;
-        }
-
-        .roadmap-item:nth-child(1) { animation-delay: 0.1s; }
-        .roadmap-item:nth-child(2) { animation-delay: 0.2s; }
-        .roadmap-item:nth-child(3) { animation-delay: 0.3s; }
-        .roadmap-item:nth-child(4) { animation-delay: 0.4s; }
-
-        @keyframes fadeInLeft {
-            from { transform: translateX(-50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .roadmap-number {
-            font-size: 3em;
-            font-weight: bold;
-            color: #00ff88;
-            min-width: 80px;
-            text-align: center;
-        }
-
-        .roadmap-content {
-            flex: 1;
-            background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,255,136,0.05) 100%);
+            position: relative;
             padding: 30px;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             border-radius: 15px;
-            border-left: 4px solid #00ff88;
+            border-left: 5px solid #ff6ec7;
+            transition: all 0.3s;
         }
 
-        .roadmap-content h3 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-            color: #00ff88;
+        .roadmap-item:hover {
+            transform: translateX(10px);
+            border-left-color: #ffd700;
+            box-shadow: 0 10px 40px rgba(255, 110, 199, 0.3);
         }
 
-        .how-to-buy {
-            background: rgba(255,255,255,0.02);
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .step {
-            background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,255,136,0.05) 100%);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            border: 2px solid rgba(0,255,136,0.3);
-            transition: all 0.3s ease;
-            animation: zoomIn 0.6s ease-out backwards;
-        }
-
-        .step:nth-child(1) { animation-delay: 0.1s; }
-        .step:nth-child(2) { animation-delay: 0.2s; }
-        .step:nth-child(3) { animation-delay: 0.3s; }
-
-        @keyframes zoomIn {
-            from { transform: scale(0.5); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .step:hover {
-            transform: scale(1.05);
-            border-color: #00ff88;
-        }
-
-        .step-number {
-            font-size: 3em;
-            color: #00ff88;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .step h3 {
-            font-size: 1.5em;
+        .roadmap-item h3 {
+            font-size: 1.8rem;
+            color: #ff6ec7;
             margin-bottom: 15px;
-            color: #fff;
         }
 
-        .community {
-            background: rgba(0,0,0,0.2);
+        .roadmap-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .roadmap-item li {
+            padding: 8px 0;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+
+        .roadmap-item li:before {
+            content: "🐱 ";
+            margin-right: 10px;
+        }
+
+        .game-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 2px solid rgba(255, 110, 199, 0.3);
             text-align: center;
         }
 
-        .social-buttons {
+        #gameCanvas {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin: 20px auto;
+            display: block;
+            border: 3px solid #ff6ec7;
+            cursor: pointer;
+        }
+
+        .score {
+            font-size: 2rem;
+            color: #ffd700;
+            margin: 20px 0;
+        }
+
+        .social-links {
             display: flex;
-            gap: 30px;
             justify-content: center;
+            gap: 30px;
             flex-wrap: wrap;
             margin-top: 40px;
         }
 
-        .social-btn {
-            padding: 20px 50px;
-            font-size: 1.3em;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-flex;
+        .social-link {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
             align-items: center;
-            gap: 15px;
-            transition: all 0.3s ease;
-            font-weight: bold;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: all 0.3s;
+            border: 2px solid transparent;
         }
 
-        .telegram {
-            background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
-            color: #fff;
-            box-shadow: 0 5px 20px rgba(0,136,204,0.4);
-        }
-
-        .telegram:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,136,204,0.6);
-        }
-
-        .twitter {
-            background: linear-gradient(135deg, #1DA1F2 0%, #0d8bd9 100%);
-            color: #fff;
-            box-shadow: 0 5px 20px rgba(29,161,242,0.4);
-        }
-
-        .twitter:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(29,161,242,0.6);
+        .social-link:hover {
+            transform: scale(1.2) rotate(360deg);
+            border-color: #ff6ec7;
+            box-shadow: 0 0 30px rgba(255, 110, 199, 0.6);
         }
 
         footer {
-            background: rgba(0,0,0,0.5);
-            padding: 40px 0;
             text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            margin-top: 50px;
+            position: relative;
+            z-index: 10;
         }
 
-        footer p {
-            font-size: 1.2em;
-            color: #888;
+        .contract-address {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3em;
+            h1 {
+                font-size: 3rem;
             }
-            
-            .hero p {
-                font-size: 1.3em;
+
+            .tagline {
+                font-size: 1.3rem;
             }
-            
-            .pepe-emoji {
-                font-size: 5em;
+
+            .logo {
+                width: 200px;
+                height: 200px;
             }
-            
-            h2 {
-                font-size: 2em;
-            }
-            
+
             .cta-buttons {
                 flex-direction: column;
-                align-items: center;
             }
-            
-            .roadmap-item {
-                flex-direction: column;
+
+            .btn {
+                width: 100%;
             }
-            
-            .roadmap-number {
-                min-width: auto;
+
+            h2 {
+                font-size: 2rem;
             }
         }
 
-        .floating {
-            animation: floating 3s ease-in-out infinite;
+        .floating-kitty {
+            position: fixed;
+            font-size: 3rem;
+            animation: floatAcross 15s linear infinite;
+            z-index: 5;
+            pointer-events: none;
         }
 
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        @keyframes floatAcross {
+            0% {
+                left: -100px;
+                top: 20%;
+            }
+            100% {
+                left: 100%;
+                top: 80%;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">$PEPE 🐸</div>
-        </nav>
-    </header>
+    <div class="stars" id="stars"></div>
+    <div class="floating-kitty">😺</div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <span class="pepe-emoji">🐸</span>
-            <h1>$PEPE</h1>
-            <p>The Green King of Memes is Here!</p>
-            <p style="font-size: 1.2em; margin-bottom: 40px;">1 Billion Coins of Pure Meme Magic</p>
-            <div class="cta-buttons">
-                <a href="https://pump.fun" class="btn btn-primary" target="_blank">🚀 Buy on Pump.fun</a>
-                <a href="#tokenomics" class="btn btn-secondary">Learn More</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="tokenomics" class="tokenomics">
-        <div class="container">
-            <h2>💎 Tokenomics</h2>
-            <div class="tokenomics-grid">
-                <div class="token-card">
-                    <h3>Total Supply</h3>
-                    <p>1,000,000,000</p>
-                </div>
-                <div class="token-card">
-                    <h3>Tax</h3>
-                    <p>0%</p>
-                </div>
-                <div class="token-card">
-                    <h3>LP Status</h3>
-                    <p
+    <div class="hero">
+        <img class="logo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzFhMWEzZSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMCwxMDApIHNjYWxlKDAuNykiPgogICAgPCEtLSBDYXQgYm9keSAtLT4KICAgIDxlbGxpcHNlIGN4PSIyMDAiIGN5PSIyNTAiIHJ4PSIxMjAiIHJ5PSIxMDAiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSI4Ii8+CiAgICAKICAgIDwhLS0gQ2F0IGhlYWQgLS0+CiAgICA8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNDAiIHI9IjgwIiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iOCIvPgogICAgCiAgICA8IS0tIExlZnQgZWFyIC0tPgogICAgPHBhdGggZD0iTSAxNTAgODAgTCAxMzAgMzAgTCAxNzAgNjAgWiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9Ij
