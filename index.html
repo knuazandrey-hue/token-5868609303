@@ -19,8 +19,8 @@ html {
 }
 
 body {
-    background: linear-gradient(135deg, #050016 0%, #0a0030 100%);
-    color: #ffffff;
+    background: linear-gradient(135deg, #f8f9fc 0%, #eef1f7 50%, #e8ecf4 100%);
+    color: #1a1a2e;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     min-height: 100vh;
@@ -31,11 +31,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #050016;
+    background: #f0f0f5;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #00ff88, #00cc6a);
+    background: linear-gradient(180deg, #00c96a, #00a855);
     border-radius: 4px;
 }
 
@@ -72,8 +72,8 @@ body {
 }
 
 @keyframes glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.6); }
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 200, 106, 0.2); }
+    50% { box-shadow: 0 0 40px rgba(0, 200, 106, 0.4); }
 }
 
 @keyframes slideInLeft {
@@ -115,15 +115,16 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(5, 0, 22, 0.95);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+    border-bottom: 1px solid rgba(0, 200, 106, 0.15);
     padding: 0 40px;
     height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
 }
 
 .nav-logo {
@@ -133,13 +134,15 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-weight: 800;
     font-size: 1.4rem;
-    color: #00ff88;
+    color: #00a855;
     text-decoration: none;
-    text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
 }
 
-.nav-logo span {
-    font-size: 1.8rem;
+.nav-logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 .nav-links {
@@ -150,7 +153,7 @@ body {
 }
 
 .nav-links a {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(26, 26, 46, 0.6);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
@@ -159,31 +162,29 @@ body {
 }
 
 .nav-links a:hover {
-    color: #00ff88;
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    color: #00a855;
 }
 
 .nav-buy-btn {
-    background: linear-gradient(135deg, #00ff88, #00cc6a);
-    color: #050016 !important;
+    background: linear-gradient(135deg, #00c96a, #00a855);
+    color: #ffffff !important;
     padding: 10px 24px;
     border-radius: 25px;
     font-weight: 700 !important;
     font-family: 'Space Grotesk', sans-serif;
     transition: all 0.3s ease;
-    text-shadow: none !important;
 }
 
 .nav-buy-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(0, 255, 136, 0.4);
+    box-shadow: 0 8px 30px rgba(0, 200, 106, 0.3);
 }
 
 .mobile-menu-btn {
     display: none;
     background: none;
     border: none;
-    color: #00ff88;
+    color: #00a855;
     font-size: 1.8rem;
     cursor: pointer;
 }
@@ -209,7 +210,7 @@ body {
     transform: translate(-50%, -50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(0, 255, 136, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 200, 106, 0.06) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -219,7 +220,7 @@ body {
     height: 350px;
     object-fit: contain;
     animation: float 3s ease-in-out infinite;
-    filter: drop-shadow(0 20px 60px rgba(0, 255, 136, 0.3));
+    filter: drop-shadow(0 20px 60px rgba(0, 200, 106, 0.2));
     margin-bottom: 30px;
     border-radius: 30px;
     position: relative;
@@ -230,7 +231,7 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-size: 5rem;
     font-weight: 900;
-    background: linear-gradient(135deg, #00ff88, #00e5ff, #ff6bff, #00ff88);
+    background: linear-gradient(135deg, #00c96a, #0099cc, #aa55cc, #00c96a);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -243,7 +244,7 @@ body {
 .hero-subtitle {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(26, 26, 46, 0.5);
     margin-bottom: 8px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -252,14 +253,14 @@ body {
 .hero-slogan {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.6rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(26, 26, 46, 0.75);
     margin-bottom: 40px;
     min-height: 45px;
 }
 
 .hero-slogan .cursor {
     animation: blink 0.8s infinite;
-    color: #00ff88;
+    color: #00a855;
 }
 
 .hero-buttons {
@@ -271,8 +272,8 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #00ff88, #00cc6a);
-    color: #050016;
+    background: linear-gradient(135deg, #00c96a, #00a855);
+    color: #ffffff;
     padding: 16px 40px;
     border: none;
     border-radius: 50px;
@@ -290,14 +291,14 @@ body {
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0, 255, 136, 0.5);
+    box-shadow: 0 12px 40px rgba(0, 200, 106, 0.4);
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
+    background: rgba(26, 26, 46, 0.04);
+    color: #1a1a2e;
     padding: 16px 32px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(26, 26, 46, 0.12);
     border-radius: 50px;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
@@ -313,26 +314,27 @@ body {
 
 .btn-secondary:hover {
     transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(0, 255, 136, 0.4);
-    box-shadow: 0 8px 30px rgba(0, 255, 136, 0.2);
+    background: rgba(0, 200, 106, 0.08);
+    border-color: rgba(0, 200, 106, 0.3);
+    box-shadow: 0 8px 30px rgba(0, 200, 106, 0.15);
 }
 
 .ca-container {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 255, 136, 0.2);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 200, 106, 0.2);
     border-radius: 15px;
     padding: 12px 20px;
     backdrop-filter: blur(10px);
     max-width: 550px;
     width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .ca-label {
-    color: #00ff88;
+    color: #00a855;
     font-family: 'Orbitron', sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
@@ -340,7 +342,7 @@ body {
 }
 
 .ca-address {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(26, 26, 46, 0.6);
     font-family: 'Space Grotesk', monospace;
     font-size: 0.8rem;
     overflow: hidden;
@@ -350,9 +352,9 @@ body {
 }
 
 .ca-copy-btn {
-    background: rgba(0, 255, 136, 0.15);
-    border: 1px solid rgba(0, 255, 136, 0.3);
-    color: #00ff88;
+    background: rgba(0, 200, 106, 0.12);
+    border: 1px solid rgba(0, 200, 106, 0.25);
+    color: #00a855;
     padding: 6px 16px;
     border-radius: 10px;
     cursor: pointer;
@@ -363,7 +365,7 @@ body {
 }
 
 .ca-copy-btn:hover {
-    background: rgba(0, 255, 136, 0.3);
+    background: rgba(0, 200, 106, 0.25);
 }
 
 /* STATS */
@@ -380,32 +382,34 @@ body {
 }
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 20px;
     padding: 32px 24px;
     text-align: center;
     backdrop-filter: blur(20px);
     transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .stat-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(0, 255, 136, 0.3);
-    background: rgba(0, 255, 136, 0.05);
+    border-color: rgba(0, 200, 106, 0.25);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 30px rgba(0, 200, 106, 0.1);
 }
 
 .stat-number {
     font-family: 'Orbitron', sans-serif;
     font-size: 2.5rem;
     font-weight: 800;
-    color: #00ff88;
+    color: #00a855;
     margin-bottom: 8px;
 }
 
 .stat-label {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(26, 26, 46, 0.45);
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 500;
@@ -418,7 +422,7 @@ body {
     font-weight: 800;
     text-align: center;
     margin-bottom: 16px;
-    background: linear-gradient(135deg, #00ff88, #00e5ff);
+    background: linear-gradient(135deg, #00a855, #0099cc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -426,7 +430,7 @@ body {
 
 .section-subtitle {
     text-align: center;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(26, 26, 46, 0.45);
     font-size: 1.1rem;
     margin-bottom: 50px;
     max-width: 600px;
@@ -448,18 +452,20 @@ body {
 }
 
 .about-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 20px;
     padding: 36px 28px;
     backdrop-filter: blur(20px);
     transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .about-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(0, 255, 136, 0.3);
-    background: rgba(0, 255, 136, 0.05);
+    border-color: rgba(0, 200, 106, 0.25);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 30px rgba(0, 200, 106, 0.1);
 }
 
 .about-icon {
@@ -473,11 +479,11 @@ body {
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 12px;
-    color: #00ff88;
+    color: #00a855;
 }
 
 .about-card p {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(26, 26, 46, 0.55);
     line-height: 1.7;
     font-size: 0.95rem;
 }
@@ -503,16 +509,16 @@ body {
     height: 300px;
     border-radius: 50%;
     background: conic-gradient(
-        #00ff88 0deg 144deg,
-        #00e5ff 144deg 216deg,
-        #ff6bff 216deg 270deg,
-        #ffb800 270deg 324deg,
-        #ff4444 324deg 360deg
+        #00c96a 0deg 144deg,
+        #0099cc 144deg 216deg,
+        #aa55cc 216deg 270deg,
+        #f0a030 270deg 324deg,
+        #e85555 324deg 360deg
     );
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 60px rgba(0, 255, 136, 0.2);
+    box-shadow: 0 0 60px rgba(0, 200, 106, 0.15);
     flex-shrink: 0;
 }
 
@@ -521,7 +527,7 @@ body {
     position: absolute;
     width: 160px;
     height: 160px;
-    background: #0a0030;
+    background: #f2f4f8;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -529,8 +535,7 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
     font-size: 0.85rem;
-    color: #00ff88;
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    color: #00a855;
 }
 
 .tokenomics-list {
@@ -555,14 +560,14 @@ body {
 .tokenomics-item-label {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(26, 26, 46, 0.7);
     font-weight: 500;
 }
 
 .tokenomics-item-percent {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
-    color: #00ff88;
+    color: #00a855;
     margin-left: auto;
     font-size: 1.1rem;
 }
@@ -586,7 +591,7 @@ body {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, #00ff88, #00e5ff, #ff6bff, #ffb800);
+    background: linear-gradient(180deg, #00c96a, #0099cc, #aa55cc, #f0a030);
 }
 
 .timeline-item {
@@ -606,20 +611,20 @@ body {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: #050016;
-    border: 3px solid #00ff88;
+    background: #f2f4f8;
+    border: 3px solid #00c96a;
     z-index: 2;
 }
 
 .timeline-item.active .timeline-dot {
-    background: #00ff88;
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    background: #00c96a;
+    box-shadow: 0 0 20px rgba(0, 200, 106, 0.4);
 }
 
 .timeline-phase {
     font-family: 'Orbitron', sans-serif;
     font-size: 0.8rem;
-    color: #00ff88;
+    color: #00a855;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -631,6 +636,7 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 12px;
+    color: #1a1a2e;
 }
 
 .timeline-list {
@@ -641,7 +647,7 @@ body {
 }
 
 .timeline-list li {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(26, 26, 46, 0.55);
     font-size: 0.95rem;
     padding-left: 20px;
     position: relative;
@@ -651,7 +657,7 @@ body {
     content: '▸';
     position: absolute;
     left: 0;
-    color: #00ff88;
+    color: #00a855;
 }
 
 /* HOW TO BUY */
@@ -668,27 +674,29 @@ body {
 }
 
 .howtobuy-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 20px;
     padding: 32px 24px;
     text-align: center;
     backdrop-filter: blur(20px);
     transition: all 0.3s ease;
     position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .howtobuy-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(0, 255, 136, 0.3);
-    background: rgba(0, 255, 136, 0.05);
+    border-color: rgba(0, 200, 106, 0.25);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 30px rgba(0, 200, 106, 0.1);
 }
 
 .step-number {
     font-family: 'Orbitron', sans-serif;
     font-size: 3rem;
     font-weight: 900;
-    color: rgba(0, 255, 136, 0.15);
+    color: rgba(0, 200, 106, 0.1);
     position: absolute;
     top: 12px;
     right: 18px;
@@ -705,11 +713,11 @@ body {
     font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #ffffff;
+    color: #1a1a2e;
 }
 
 .howtobuy-card p {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(26, 26, 46, 0.45);
     font-size: 0.9rem;
     line-height: 1.6;
 }
@@ -723,13 +731,14 @@ body {
 }
 
 .game-container {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(0, 255, 136, 0.2);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 200, 106, 0.2);
     border-radius: 30px;
     padding: 50px 30px;
     backdrop-filter: blur(20px);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0, 200, 106, 0.08);
 }
 
 .game-container::before {
@@ -739,22 +748,22 @@ body {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(135deg, #00ff88, #00e5ff, #ff6bff, #00ff88);
+    background: linear-gradient(135deg, #00c96a, #0099cc, #aa55cc, #00c96a);
     border-radius: 31px;
     z-index: -1;
-    opacity: 0.3;
+    opacity: 0.2;
 }
 
 .game-score {
     font-family: 'Orbitron', sans-serif;
     font-size: 3rem;
     font-weight: 900;
-    color: #00ff88;
+    color: #00a855;
     margin-bottom: 5px;
 }
 
 .game-score-label {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(26, 26, 46, 0.45);
     font-size: 0.9rem;
     margin-bottom: 5px;
     text-transform: uppercase;
@@ -763,7 +772,7 @@ body {
 
 .game-level {
     font-family: 'Space Grotesk', sans-serif;
-    color: #ffb800;
+    color: #e09000;
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 30px;
@@ -784,7 +793,7 @@ body {
     object-fit: contain;
     border-radius: 20px;
     transition: transform 0.1s;
-    filter: drop-shadow(0 10px 30px rgba(0, 255, 136, 0.3));
+    filter: drop-shadow(0 10px 30px rgba(0, 200, 106, 0.2));
 }
 
 .game-click-area:active .game-mascot {
@@ -796,20 +805,20 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.5rem;
     font-weight: 800;
-    color: #00ff88;
+    color: #00a855;
     pointer-events: none;
     animation: floatUp 0.8s ease forwards;
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+    text-shadow: 0 0 10px rgba(0, 200, 106, 0.5);
 }
 
 .game-multiplier {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(26, 26, 46, 0.45);
     font-size: 0.85rem;
     margin-top: 10px;
 }
 
 .game-hint {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(26, 26, 46, 0.3);
     font-size: 0.8rem;
     margin-top: 15px;
     font-style: italic;
@@ -829,19 +838,21 @@ body {
 }
 
 .community-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 20px;
     padding: 40px 28px;
     text-align: center;
     backdrop-filter: blur(20px);
     transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .community-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(0, 255, 136, 0.3);
-    background: rgba(0, 255, 136, 0.05);
+    border-color: rgba(0, 200, 106, 0.25);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 30px rgba(0, 200, 106, 0.1);
 }
 
 .community-icon {
@@ -855,10 +866,11 @@ body {
     font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 12px;
+    color: #1a1a2e;
 }
 
 .community-card p {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(26, 26, 46, 0.45);
     margin-bottom: 24px;
     font-size: 0.95rem;
     line-height: 1.6;
@@ -877,35 +889,35 @@ body {
 }
 
 .community-btn.twitter {
-    background: rgba(29, 161, 242, 0.15);
-    color: #1da1f2;
-    border: 1px solid rgba(29, 161, 242, 0.3);
+    background: rgba(29, 161, 242, 0.1);
+    color: #1a8cd8;
+    border: 1px solid rgba(29, 161, 242, 0.2);
 }
 
 .community-btn.twitter:hover {
-    background: rgba(29, 161, 242, 0.3);
+    background: rgba(29, 161, 242, 0.2);
     transform: translateY(-3px);
 }
 
 .community-btn.telegram {
-    background: rgba(0, 136, 204, 0.15);
-    color: #0088cc;
-    border: 1px solid rgba(0, 136, 204, 0.3);
+    background: rgba(0, 136, 204, 0.1);
+    color: #0077b5;
+    border: 1px solid rgba(0, 136, 204, 0.2);
 }
 
 .community-btn.telegram:hover {
-    background: rgba(0, 136, 204, 0.3);
+    background: rgba(0, 136, 204, 0.2);
     transform: translateY(-3px);
 }
 
 .community-btn.pumpfun {
-    background: rgba(0, 255, 136, 0.15);
-    color: #00ff88;
-    border: 1px solid rgba(0, 255, 136, 0.3);
+    background: rgba(0, 200, 106, 0.1);
+    color: #00a855;
+    border: 1px solid rgba(0, 200, 106, 0.2);
 }
 
 .community-btn.pumpfun:hover {
-    background: rgba(0, 255, 136, 0.3);
+    background: rgba(0, 200, 106, 0.2);
     transform: translateY(-3px);
 }
 
@@ -913,12 +925,12 @@ body {
 .footer {
     padding: 40px 20px;
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
     margin-top: 60px;
 }
 
 .footer-disclaimer {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(26, 26, 46, 0.3);
     font-size: 0.8rem;
     max-width: 700px;
     margin: 0 auto 16px;
@@ -926,13 +938,13 @@ body {
 }
 
 .footer-copyright {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(26, 26, 46, 0.2);
     font-size: 0.75rem;
     font-family: 'Space Grotesk', sans-serif;
 }
 
 .footer-copyright span {
-    color: #00ff88;
+    color: #00a855;
 }
 
 /* RESPONSIVE */
@@ -961,11 +973,12 @@ body {
         top: 70px;
         left: 0;
         right: 0;
-        background: rgba(5, 0, 22, 0.98);
+        background: rgba(255, 255, 255, 0.98);
         flex-direction: column;
         padding: 20px;
         gap: 16px;
-        border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+        border-bottom: 1px solid rgba(0, 200, 106, 0.15);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
     .nav-links.active {
         display: flex;
@@ -1026,7 +1039,25 @@ body {
 <!-- NAVBAR -->
 <nav class="navbar">
     <a href="#" class="nav-logo">
-        <span>🐸🐱</span> $FROGCAT
+        <svg class="nav-logo-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="20" fill="#e8f5e9"/>
+            <ellipse cx="50" cy="58" rx="28" ry="25" fill="#4caf50"/>
+            <ellipse cx="50" cy="55" rx="22" ry="18" fill="#66bb6a"/>
+            <circle cx="38" cy="42" r="8" fill="white"/>
+            <circle cx="62" cy="42" r="8" fill="white"/>
+            <circle cx="40" cy="42" r="4" fill="#1a1a2e"/>
+            <circle cx="64" cy="42" r="4" fill="#1a1a2e"/>
+            <ellipse cx="50" cy="55" rx="6" ry="3" fill="#388e3c"/>
+            <path d="M44 60 Q50 66 56 60" stroke="#388e3c" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <ellipse cx="30" cy="72" rx="10" ry="7" fill="white" opacity="0.9"/>
+            <ellipse cx="70" cy="72" rx="10" ry="7" fill="white" opacity="0.9"/>
+            <ellipse cx="50" cy="80" rx="8" ry="5" fill="white" opacity="0.9"/>
+            <path d="M28 30 Q22 15 35 25" stroke="#4caf50" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M72 30 Q78 15 65 25" stroke="#4caf50" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M25 70 Q20 65 28 68" stroke="#ffab91" stroke-width="2" fill="none"/>
+            <path d="M75 70 Q80 65 72 68" stroke="#ffab91" stroke-width="2" fill="none"/>
+        </svg>
+        $FROGCAT
     </a>
     <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
     <ul class="nav-links" id="navLinks">
@@ -1040,7 +1071,114 @@ body {
 
 <!-- HERO -->
 <section class="hero" id="hero">
-    <img src="mascot.jpg" alt="FROGCAT mascot - a cute green frog hugging a white cat" class="hero-mascot">
+    <svg class="hero-mascot" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background circle glow -->
+        <defs>
+            <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#a5d6a7" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#a5d6a7" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="cheekGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ff8a80" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#ff8a80" stop-opacity="0"/>
+            </radialGradient>
+        </defs>
+        <circle cx="200" cy="200" r="190" fill="url(#glow1)"/>
+
+        <!-- Cat body (white cat being hugged) -->
+        <ellipse cx="200" cy="280" rx="65" ry="80" fill="#fafafa" stroke="#e0e0e0" stroke-width="2"/>
+        <!-- Cat head -->
+        <circle cx="200" cy="180" r="50" fill="#fafafa" stroke="#e0e0e0" stroke-width="2"/>
+        <!-- Cat ears -->
+        <polygon points="160,145 150,100 180,130" fill="#fafafa" stroke="#e0e0e0" stroke-width="2"/>
+        <polygon points="240,145 250,100 220,130" fill="#fafafa" stroke="#e0e0e0" stroke-width="2"/>
+        <polygon points="163,142 155,110 177,132" fill="#ffcdd2" opacity="0.6"/>
+        <polygon points="237,142 245,110 223,132" fill="#ffcdd2" opacity="0.6"/>
+        <!-- Cat eyes (closed/happy) -->
+        <path d="M180 175 Q188 168 196 175" stroke="#555" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M204 175 Q212 168 220 175" stroke="#555" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Cat nose -->
+        <ellipse cx="200" cy="185" rx="4" ry="3" fill="#ffab91"/>
+        <!-- Cat mouth -->
+        <path d="M193 190 Q200 196 207 190" stroke="#999" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- Cat whiskers -->
+        <line x1="155" y1="182" x2="182" y2="185" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="155" y1="190" x2="182" y2="190" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="218" y1="185" x2="245" y2="182" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="218" y1="190" x2="245" y2="190" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Cat tail -->
+        <path d="M260 310 Q290 280 280 250 Q270 230 285 210" stroke="#e0e0e0" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+        <!-- Frog body (hugging from behind) -->
+        <ellipse cx="200" cy="290" rx="80" ry="85" fill="#66bb6a" stroke="#4caf50" stroke-width="2"/>
+        <!-- Frog head (peeking over cat's head) -->
+        <ellipse cx="200" cy="130" rx="60" ry="45" fill="#66bb6a" stroke="#4caf50" stroke-width="2"/>
+        <!-- Frog eye bumps -->
+        <circle cx="170" cy="105" r="22" fill="#66bb6a" stroke="#4caf50" stroke-width="2"/>
+        <circle cx="230" cy="105" r="22" fill="#66bb6a" stroke="#4caf50" stroke-width="2"/>
+        <!-- Frog eyes (big, shiny, adoring) -->
+        <circle cx="170" cy="103" r="16" fill="white"/>
+        <circle cx="230" cy="103" r="16" fill="white"/>
+        <circle cx="173" cy="101" r="9" fill="#1a1a2e"/>
+        <circle cx="233" cy="101" r="9" fill="#1a1a2e"/>
+        <circle cx="176" cy="97" r="4" fill="white"/>
+        <circle cx="236" cy="97" r="4" fill="white"/>
+        <circle cx="170" cy="105" r="2.5" fill="white" opacity="0.5"/>
+        <circle cx="230" cy="105" r="2.5" fill="white" opacity="0.5"/>
+        <!-- Frog happy eyebrows -->
+        <path d="M155 88 Q163 82 178 86" stroke="#4caf50" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M222 86 Q237 82 245 88" stroke="#4caf50" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Frog mouth (big smile) -->
+        <path d="M172 138 Q200 158 228 138" stroke="#388e3c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Frog cheeks (blush) -->
+        <circle cx="155" cy="130" r="12" fill="url(#cheekGlow)"/>
+        <circle cx="245" cy="130" r="12" fill="url(#cheekGlow)"/>
+        <!-- Frog nostrils -->
+        <circle cx="190" cy="128" r="3" fill="#4caf50"/>
+        <circle cx="210" cy="128" r="3" fill="#4caf50"/>
+
+        <!-- Frog arms (hugging the cat tightly!) -->
+        <!-- Left arm -->
+        <path d="M125 250 Q100 220 110 190 Q120 170 145 180 Q150 200 155 230" fill="#66bb6a" stroke="#4caf50" stroke-width="2"/>
+        <ellipse cx="142" cy="178" rx="15" ry="12" fill="#66bb6a" stroke="#4caf50" stroke-width="2"/>
+        <!-- Left hand on cat -->
+        <circle cx="155" cy="230" r="10" fill="#81c784"/>
+        <circle cx="148" cy="225" r="5" fill="#81c784" stroke="#4caf50" stroke-width="1"/>
+        <circle cx="160" cy="223" r="5" fill="#81c784" stroke="#4caf50" stroke-width="1"/>
+
+        <!-- Right arm -->
+        <path d="M275 250 Q300 220 290 190 Q280 170 255 180 Q250 200 245 230" fill="#66bb6a" stroke="#4caf50" stroke-width="2"/>
+        <ellipse cx="258" cy="178" rx="15" ry="12" fill="#66bb6a" stroke="#4caf50" stroke-width="2"/>
+        <!-- Right hand on cat -->
+        <circle cx="245" cy="230" r="10" fill="#81c784"/>
+        <circle cx="252" cy="225" r="5" fill="#81c784" stroke="#4caf50" stroke-width="1"/>
+        <circle cx="240" cy="223" r="5" fill="#81c784" stroke="#4caf50" stroke-width="1"/>
+
+        <!-- Frog legs -->
+        <ellipse cx="145" cy="355" rx="30" ry="15" fill="#66bb6a" stroke="#4caf50" stroke-width="2"/>
+        <ellipse cx="255" cy="355" rx="30" ry="15" fill="#66bb6a" stroke="#4caf50" stroke-width="2"/>
+        <!-- Frog toes -->
+        <circle cx="120" cy="355" r="7" fill="#81c784" stroke="#4caf50" stroke-width="1"/>
+        <circle cx="135" cy="360" r="6" fill="#81c784" stroke="#4caf50" stroke-width="1"/>
+        <circle cx="150" cy="362" r="6" fill="#81c784" stroke="#4caf50" stroke-width="1"/>
+        <circle cx="280" cy="355" r="7" fill="#81c784" stroke="#4caf50" stroke-width="1"/>
+        <circle cx="265" cy="360" r="6" fill="#81c784" stroke="#4caf50" stroke-width="1"/>
+        <circle cx="250" cy="362" r="6" fill="#81c784" stroke="#4caf50" stroke-width="1"/>
+
+        <!-- Hearts floating -->
+        <g opacity="0.8">
+            <text x="80" y="80" font-size="28" fill="#e91e63" opacity="0.6">♥</text>
+            <text x="300" y="60" font-size="22" fill="#e91e63" opacity="0.5">♥</text>
+            <text x="320" y="140" font-size="18" fill="#e91e63" opacity="0.4">♥</text>
+            <text x="60" y="150" font-size="16" fill="#e91e63" opacity="0.4">♥</text>
+            <text x="110" y="50" font-size="14" fill="#e91e63" opacity="0.3">♥</text>
+        </g>
+
+        <!-- Sparkles -->
+        <text x="90" y="120" font-size="16" fill="#ffd54f" opacity="0.6">✦</text>
+        <text x="290" y="90" font-size="14" fill="#ffd54f" opacity="0.5">✦</text>
+        <text x="330" y="200" font-size="12" fill="#ffd54f" opacity="0.4">✦</text>
+    </svg>
     <div class="hero-subtitle">The Clingiest Token on Solana</div>
     <h1 class="hero-title">$FROGCAT</h1>
     <div class="hero-slogan" id="slogan"></div>
@@ -1105,27 +1243,27 @@ body {
         <div class="tokenomics-chart"></div>
         <div class="tokenomics-list">
             <div class="tokenomics-item">
-                <div class="tokenomics-color" style="background: #00ff88;"></div>
+                <div class="tokenomics-color" style="background: #00c96a;"></div>
                 <span class="tokenomics-item-label">Community Rewards</span>
                 <span class="tokenomics-item-percent">40%</span>
             </div>
             <div class="tokenomics-item">
-                <div class="tokenomics-color" style="background: #00e5ff;"></div>
+                <div class="tokenomics-color" style="background: #0099cc;"></div>
                 <span class="tokenomics-item-label">Liquidity Pool</span>
                 <span class="tokenomics-item-percent">20%</span>
             </div>
             <div class="tokenomics-item">
-                <div class="tokenomics-color" style="background: #ff6bff;"></div>
+                <div class="tokenomics-color" style="background: #aa55cc;"></div>
                 <span class="tokenomics-item-label">Team</span>
                 <span class="tokenomics-item-percent">15%</span>
             </div>
             <div class="tokenomics-item">
-                <div class="tokenomics-color" style="background: #ffb800;"></div>
+                <div class="tokenomics-color" style="background: #f0a030;"></div>
                 <span class="tokenomics-item-label">Marketing</span>
                 <span class="tokenomics-item-percent">15%</span>
             </div>
             <div class="tokenomics-item">
-                <div class="tokenomics-color" style="background: #ff4444;"></div>
+                <div class="tokenomics-color" style="background: #e85555;"></div>
                 <span class="tokenomics-item-label">Reserve</span>
                 <span class="tokenomics-item-percent">10%</span>
             </div>
@@ -1230,343 +1368,32 @@ body {
         <div class="game-score" id="gameScore">0</div>
         <div class="game-level" id="gameLevel">🥚 Level 1 — Tadpole</div>
         <div class="game-click-area" id="gameClickArea">
-            <img src="mascot.jpg" alt="Click me!" class="game-mascot" draggable="false">
-        </div>
-        <div class="game-multiplier" id="gameMultiplier">+1 per click</div>
-        <div class="game-hint">Click the frog to collect $FROGCAT! Level up every 100 clicks!</div>
-    </div>
-</section>
-
-<!-- COMMUNITY -->
-<section class="community-section" id="community">
-    <h2 class="section-title">Join the Hug</h2>
-    <p class="section-subtitle">Become part of the clingiest, most wholesome community in all of crypto.</p>
-    <div class="community-grid">
-        <div class="community-card">
-            <span class="community-icon">🐦</span>
-            <h3>Twitter / X</h3>
-            <p>Follow us for the latest memes, announcements, and daily doses of frog-cat wholesomeness.</p>
-            <a href="https://twitter.com" target="_blank" class="community-btn twitter">Follow @FrogCatSol →</a>
-        </div>
-        <div class="community-card">
-            <span class="community-icon">💬</span>
-            <h3>Telegram</h3>
-            <p>Join our group chat where huggers gather to share alpha, memes, and emotional support.</p>
-            <a href="https://t.me" target="_blank" class="community-btn telegram">Join Chat →</a>
-        </div>
-        <div class="community-card">
-            <span class="community-icon">🚀</span>
-            <h3>Pump.fun</h3>
-            <p>The launchpad where it all began. Buy, trade, and watch the chart go up (or give it a hug).</p>
-            <a href="https://pump.fun" target="_blank" class="community-btn pumpfun">Trade Now →</a>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-    <p class="footer-disclaimer">$FROGCAT is a meme coin with no intrinsic value or expectation of financial return. It exists purely for entertainment purposes. There is no formal team or roadmap guarantees. The coin is completely useless — just like a frog hugging an imaginary cat. Always DYOR and never invest more than you can afford to lose.</p>
-    <p class="footer-copyright">© 2025 <span>$FROGCAT</span> — All hugs reserved. Built with 💚 on Solana.</p>
-</footer>
-
-<script>
-// =============================================
-// MOBILE MENU
-// =============================================
-function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('active');
-}
-
-// Close mobile menu on link click
-document.querySelectorAll('.nav-links a').forEach(function(link) {
-    link.addEventListener('click', function() {
-        document.getElementById('navLinks').classList.remove('active');
-    });
-});
-
-// =============================================
-// TYPEWRITER EFFECT
-// =============================================
-(function() {
-    var phrases = [
-        "He's not letting go. Neither should you. 🐸🤍",
-        "The most emotionally attached token on Solana.",
-        "Hold your cat. Hold your bags. Hold forever.",
-        "Born from love. Fueled by memes. 💚",
-        "Diamond hugs > Diamond hands."
-    ];
-    var el = document.getElementById('slogan');
-    var phraseIndex = 0;
-    var charIndex = 0;
-    var isDeleting = false;
-    var typingSpeed = 60;
-
-    function type() {
-        var currentPhrase = phrases[phraseIndex];
-        if (isDeleting) {
-            el.innerHTML = currentPhrase.substring(0, charIndex - 1) + '<span class="cursor">|</span>';
-            charIndex--;
-            typingSpeed = 30;
-        } else {
-            el.innerHTML = currentPhrase.substring(0, charIndex + 1) + '<span class="cursor">|</span>';
-            charIndex++;
-            typingSpeed = 60;
-        }
-
-        if (!isDeleting && charIndex === currentPhrase.length) {
-            typingSpeed = 2000;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            typingSpeed = 400;
-        }
-
-        setTimeout(type, typingSpeed);
-    }
-
-    setTimeout(type, 800);
-})();
-
-// =============================================
-// ANIMATED COUNTERS
-// =============================================
-(function() {
-    function animateCounter(elementId, target, prefix, suffix, duration) {
-        var el = document.getElementById(elementId);
-        var start = 0;
-        var startTime = null;
-
-        function step(timestamp) {
-            if (!startTime) startTime = timestamp;
-            var progress = Math.min((timestamp - startTime) / duration, 1);
-            var eased = 1 - Math.pow(1 - progress, 3);
-            var current = Math.floor(eased * target);
-            el.textContent = prefix + current.toLocaleString() + suffix;
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            }
-        }
-
-        requestAnimationFrame(step);
-    }
-
-    setTimeout(function() {
-        animateCounter('statHolders', 4287, '', '', 2000);
-        animateCounter('statMcap', 690, '$', 'K', 2000);
-        animateCounter('statSupply', 1, '', 'B', 2000);
-    }, 500);
-})();
-
-// =============================================
-// COPY CA ADDRESS
-// =============================================
-function copyCA() {
-    var address = document.getElementById('caAddress').textContent;
-    var btn = document.getElementById('caCopyBtn');
-
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(address).then(function() {
-            btn.textContent = 'Copied! ✅';
-            btn.style.background = 'rgba(0, 255, 136, 0.3)';
-            setTimeout(function() {
-                btn.textContent = 'Copy';
-                btn.style.background = 'rgba(0, 255, 136, 0.15)';
-            }, 2000);
-        });
-    } else {
-        var textarea = document.createElement('textarea');
-        textarea.value = address;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        btn.textContent = 'Copied! ✅';
-        btn.style.background = 'rgba(0, 255, 136, 0.3)';
-        setTimeout(function() {
-            btn.textContent = 'Copy';
-            btn.style.background = 'rgba(0, 255, 136, 0.15)';
-        }, 2000);
-    }
-}
-
-// =============================================
-// CLICKER GAME
-// =============================================
-(function() {
-    var score = 0;
-    var level = 1;
-    var multiplier = 1;
-    var clickArea = document.getElementById('gameClickArea');
-    var scoreDisplay = document.getElementById('gameScore');
-    var levelDisplay = document.getElementById('gameLevel');
-    var multiplierDisplay = document.getElementById('gameMultiplier');
-
-    var levels = [
-        { name: '🥚 Tadpole', threshold: 0 },
-        { name: '🐸 Froglet', threshold: 100 },
-        { name: '🐸💚 Hugger', threshold: 200 },
-        { name: '🐸🐱 Cat Whisperer', threshold: 400 },
-        { name: '🐸🐱✨ Cling Lord', threshold: 700 },
-        { name: '🐸🐱💎 Diamond Hugger', threshold: 1000 },
-        { name: '🐸🐱🚀 Moon Frog', threshold: 1500 },
-        { name: '🐸🐱🌕 Mars Frog', threshold: 2000 },
-        { name: '🐸🐱👑 Frog King', threshold: 3000 },
-        { name: '🐸🐱🌌 Cosmic Hugger', threshold: 5000 }
-    ];
-
-    function updateLevel() {
-        var newLevel = 1;
-        for (var i = levels.length - 1; i >= 0; i--) {
-            if (score >= levels[i].threshold) {
-                newLevel = i + 1;
-                break;
-            }
-        }
-        if (newLevel !== level) {
-            level = newLevel;
-            multiplier = level;
-            levelDisplay.textContent = levels[level - 1].name + ' — Level ' + level;
-            multiplierDisplay.textContent = '+' + multiplier + ' per click';
-            levelDisplay.style.animation = 'none';
-            levelDisplay.offsetHeight;
-            levelDisplay.style.animation = 'bounceIn 0.5s ease';
-        }
-    }
-
-    function createClickEffect(x, y) {
-        var effect = document.createElement('div');
-        effect.className = 'click-effect';
-        effect.textContent = '+' + multiplier;
-        effect.style.left = (x - 20) + 'px';
-        effect.style.top = (y - 20) + 'px';
-        clickArea.appendChild(effect);
-        setTimeout(function() {
-            if (effect.parentNode) {
-                effect.parentNode.removeChild(effect);
-            }
-        }, 800);
-    }
-
-    clickArea.addEventListener('click', function(e) {
-        var rect = clickArea.getBoundingClientRect();
-        var x = e.clientX - rect.left;
-        var y = e.clientY - rect.top;
-
-        score += multiplier;
-        scoreDisplay.textContent = score.toLocaleString();
-        createClickEffect(x, y);
-        updateLevel();
-    });
-
-    // Touch support
-    clickArea.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        var touch = e.touches[0];
-        var rect = clickArea.getBoundingClientRect();
-        var x = touch.clientX - rect.left;
-        var y = touch.clientY - rect.top;
-
-        score += multiplier;
-        scoreDisplay.textContent = score.toLocaleString();
-        createClickEffect(x, y);
-        updateLevel();
-    });
-})();
-
-// =============================================
-// SMOOTH SCROLL FOR NAVBAR LINKS
-// =============================================
-document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function(e) {
-        var target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            e.preventDefault();
-            var offset = 80;
-            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top: top, behavior: 'smooth' });
-        }
-    });
-});
-
-// =============================================
-// NAVBAR BACKGROUND ON SCROLL
-// =============================================
-(function() {
-    var navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.style.borderBottomColor = 'rgba(0, 255, 136, 0.25)';
-            navbar.style.background = 'rgba(5, 0, 22, 0.98)';
-        } else {
-            navbar.style.borderBottomColor = 'rgba(0, 255, 136, 0.15)';
-            navbar.style.background = 'rgba(5, 0, 22, 0.95)';
-        }
-    });
-})();
-
-// =============================================
-// PARALLAX PARTICLES (subtle background effect)
-// =============================================
-(function() {
-    var canvas = document.createElement('canvas');
-    canvas.style.position = 'fixed';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '0';
-    canvas.style.opacity = '0.4';
-    document.body.insertBefore(canvas, document.body.firstChild);
-
-    var ctx = canvas.getContext('2d');
-    var particles = [];
-    var particleCount = 40;
-
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    for (var i = 0; i < particleCount; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 2 + 0.5,
-            speedX: (Math.random() - 0.5) * 0.3,
-            speedY: (Math.random() - 0.5) * 0.3,
-            opacity: Math.random() * 0.5 + 0.1
-        });
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (var i = 0; i < particles.length; i++) {
-            var p = particles[i];
-            p.x += p.speedX;
-            p.y += p.speedY;
-
-            if (p.x < 0) p.x = canvas.width;
-            if (p.x > canvas.width) p.x = 0;
-            if (p.y < 0) p.y = canvas.height;
-            if (p.y > canvas.height) p.y = 0;
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(0, 255, 136, ' + p.opacity + ')';
-            ctx.fill();
-        }
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-})();
-</script>
-</body>
-</html>
+            <svg class="game-mascot" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="95" fill="#e8f5e9" opacity="0.5"/>
+                <!-- Cat body -->
+                <ellipse cx="100" cy="145" rx="35" ry="42" fill="#fafafa" stroke="#e0e0e0" stroke-width="1.5"/>
+                <!-- Cat head -->
+                <circle cx="100" cy="95" r="26" fill="#fafafa" stroke="#e0e0e0" stroke-width="1.5"/>
+                <!-- Cat ears -->
+                <polygon points="80,78 75,55 90,72" fill="#fafafa" stroke="#e0e0e0" stroke-width="1.5"/>
+                <polygon points="120,78 125,55 110,72" fill="#fafafa" stroke="#e0e0e0" stroke-width="1.5"/>
+                <polygon points="81,76 77,60 89,73" fill="#ffcdd2" opacity="0.5"/>
+                <polygon points="119,76 123,60 111,73" fill="#ffcdd2" opacity="0.5"/>
+                <!-- Cat eyes closed -->
+                <path d="M90 92 Q95 88 100 92" stroke="#666" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <path d="M100 92 Q105 88 110 92" stroke="#666" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <!-- Cat nose & mouth -->
+                <ellipse cx="100" cy="97" rx="2.5" ry="2" fill="#ffab91"/>
+                <path d="M96 100 Q100 103 104 100" stroke="#aaa" stroke-width="1" fill="none" stroke-linecap="round"/>
+                <!-- Cat whiskers -->
+                <line x1="78" y1="95" x2="90" y2="97" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+                <line x1="78" y1="100" x2="90" y2="100" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+                <line x1="110" y1="97" x2="122" y2="95" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+                <line x1="110" y1="100" x2="122" y2="100" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+                <!-- Frog body -->
+                <ellipse cx="100" cy="150" rx="42" ry="44" fill="#66bb6a" stroke="#4caf50" stroke-width="1.5"/>
+                <!-- Frog head -->
+                <ellipse cx="100" cy="70" rx="32" ry="24" fill="#66bb6a" stroke="#4caf50" stroke-width="1.5"/>
+                <!-- Frog eye bumps -->
+                <circle cx="
+</body></html>
