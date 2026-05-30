@@ -1,1014 +1,767 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>$SKETCHY — The Doodle Cat Memecoin</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>$SKETCHKAT — The Doodle Cat Meme Token</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --accent: #b44dff;
-  --cyan: #00ffcc;
-  --bg-dark: #0a0015;
-  --bg-mid: #0d0030;
-  --bg-deep: #000a1a;
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --text: #ffffff;
-  --text-dim: rgba(255, 255, 255, 0.6);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 50%, var(--bg-deep) 100%);
-  background-attachment: fixed;
-  color: var(--text);
-  font-family: 'Space Grotesk', sans-serif;
-  overflow-x: hidden;
-  min-height: 100vh;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-dark);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 4px;
-}
-
-/* ===== NAVBAR ===== */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(180, 77, 255, 0.2);
-  padding: 15px 0;
-  transition: all 0.3s ease;
-}
-
-.navbar.scrolled {
-  padding: 10px 0;
-  background: rgba(0, 0, 0, 0.95);
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-logo {
-  font-family: 'Orbitron', monospace;
-  font-size: 1.5em;
-  font-weight: 800;
-  background: linear-gradient(90deg, var(--accent), var(--cyan));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.nav-logo span {
-  font-size: 0.7em;
-  opacity: 0.7;
-}
-
-.nav-links {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-  align-items: center;
-}
-
-.nav-links a {
-  color: var(--text-dim);
-  text-decoration: none;
-  font-size: 0.9em;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.nav-links a:hover {
-  color: var(--accent);
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.nav-btn {
-  background: transparent;
-  border: 2px solid var(--accent);
-  color: var(--accent);
-  padding: 8px 24px;
-  border-radius: 50px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(180, 77, 255, 0.3);
-  text-decoration: none;
-  font-size: 0.9em;
-}
-
-.nav-btn:hover {
-  background: var(--accent);
-  color: #000;
-  transform: translateY(-3px);
-  box-shadow: 0 0 40px rgba(180, 77, 255, 0.6);
-}
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 5px;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 2px;
-  background: var(--text);
-  transition: all 0.3s ease;
-}
-
-/* ===== HERO SECTION ===== */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 120px 20px 80px;
-}
-
-.hero-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  width: 100%;
-}
-
-.hero-content {
-  z-index: 2;
-}
-
-.hero-badge {
-  display: inline-block;
-  background: rgba(180, 77, 255, 0.15);
-  border: 1px solid rgba(180, 77, 255, 0.3);
-  padding: 6px 18px;
-  border-radius: 50px;
-  font-size: 0.85em;
-  color: var(--accent);
-  margin-bottom: 20px;
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.hero-title {
-  font-family: 'Orbitron', monospace;
-  font-size: 4em;
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  min-height: 1.2em;
-  background: linear-gradient(135deg, #ffffff 0%, var(--accent) 50%, var(--cyan) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-subtitle {
-  font-size: 1.2em;
-  color: var(--text-dim);
-  line-height: 1.6;
-  margin-bottom: 35px;
-  max-width: 500px;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--accent), #8800ff);
-  color: #fff;
-  border: none;
-  padding: 14px 36px;
-  border-radius: 50px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1em;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 30px rgba(180, 77, 255, 0.4);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 50px rgba(180, 77, 255, 0.7);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--cyan);
-  border: 2px solid var(--cyan);
-  padding: 14px 36px;
-  border-radius: 50px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1em;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.btn-secondary:hover {
-  background: rgba(0, 255, 204, 0.1);
-  transform: translateY(-3px);
-  box-shadow: 0 0 40px rgba(0, 255, 204, 0.4);
-}
-
-.hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-}
-
-.cat-container {
-  position: relative;
-  width: 400px;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cat-glow {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(180, 77, 255, 0.3) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-  0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.2); opacity: 0.8; }
-}
-
-.cat-svg {
-  position: relative;
-  z-index: 2;
-}
-
-/* ===== STATS BAR ===== */
-.stats-bar {
-  position: relative;
-  z-index: 2;
-  padding: 60px 20px;
-  background: rgba(0, 0, 0, 0.3);
-  border-top: 1px solid var(--glass-border);
-  border-bottom: 1px solid var(--glass-border);
-}
-
-.stats-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-.stat-card {
-  text-align: center;
-  padding: 30px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent);
-  box-shadow: 0 10px 40px rgba(180, 77, 255, 0.2);
-}
-
-.stat-icon {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-.stat-number {
-  font-family: 'Orbitron', monospace;
-  font-size: 2.5em;
-  font-weight: 800;
-  background: linear-gradient(90deg, var(--accent), var(--cyan));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.stat-label {
-  color: var(--text-dim);
-  font-size: 0.9em;
-  margin-top: 5px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-/* ===== ABOUT ===== */
-.about-section {
-  padding: 100px 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.section-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.section-tag {
-  display: inline-block;
-  background: rgba(180, 77, 255, 0.15);
-  border: 1px solid rgba(180, 77, 255, 0.3);
-  padding: 6px 18px;
-  border-radius: 50px;
-  font-size: 0.85em;
-  color: var(--accent);
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.section-title {
-  font-family: 'Orbitron', monospace;
-  font-size: 2.5em;
-  font-weight: 800;
-  margin-bottom: 15px;
-}
-
-.section-subtitle {
-  color: var(--text-dim);
-  font-size: 1.1em;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-}
-
-.about-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 40px 30px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.about-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--cyan));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.about-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(180, 77, 255, 0.3);
-  box-shadow: 0 10px 40px rgba(180, 77, 255, 0.15);
-}
-
-.about-card:hover::before {
-  opacity: 1;
-}
-
-.about-icon {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-}
-
-.about-card h3 {
-  font-family: 'Orbitron', monospace;
-  font-size: 1.2em;
-  margin-bottom: 12px;
-  color: var(--accent);
-}
-
-.about-card p {
-  color: var(--text-dim);
-  line-height: 1.6;
-  font-size: 0.95em;
-}
-
-/* ===== CONCEPT ===== */
-.concept-section {
-  padding: 100px 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.concept-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
-.concept-text h3 {
-  font-family: 'Orbitron', monospace;
-  font-size: 1.8em;
-  margin-bottom: 20px;
-  background: linear-gradient(90deg, var(--accent), var(--cyan));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.concept-text p {
-  color: var(--text-dim);
-  line-height: 1.8;
-  font-size: 1em;
-  margin-bottom: 15px;
-}
-
-.concept-features {
-  list-style: none;
-  margin-top: 25px;
-}
-
-.concept-features li {
-  padding: 10px 0;
-  color: var(--text-dim);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.95em;
-}
-
-.concept-features li .check {
-  color: var(--cyan);
-  font-size: 1.2em;
-}
-
-.concept-visual {
-  display: flex;
-  justify-content: center;
-}
-
-.concept-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  padding: 40px;
-  width: 100%;
-  max-width: 450px;
-}
-
-.concept-card .quote {
-  font-size: 1.4em;
-  font-style: italic;
-  color: var(--accent);
-  margin-bottom: 20px;
-  line-height: 1.5;
-}
-
-.concept-card .attribution {
-  color: var(--text-dim);
-  font-size: 0.9em;
-}
-
-/* ===== TOKENOMICS ===== */
-.tokenomics-section {
-  padding: 100px 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.tokenomics-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
-.pie-chart {
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: conic-gradient(
-    var(--accent) 0deg 180deg,
-    var(--cyan) 180deg 252deg,
-    #ff6b6b 252deg 306deg,
-    #ffd93d 306deg 360deg
-  );
-  position: relative;
-  margin: 0 auto;
-  box-shadow: 0 0 60px rgba(180, 77, 255, 0.3);
-  animation: rotate-slow 20s linear infinite;
-}
-
-@keyframes rotate-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.pie-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--bg-dark), var(--bg-mid));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-}
-
-.pie-center span {
-  font-family: 'Orbitron', monospace;
-  font-size: 0.8em;
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.pie-center strong {
-  font-family: 'Orbitron', monospace;
-  font-size: 1.4em;
-  color: #fff;
-}
-
-.tokenomics-details {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.token-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 18px 24px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  transition: all 0.3s ease;
-}
-
-.token-item:hover {
-  transform: translateX(10px);
-  border-color: var(--accent);
-}
-
-.token-color {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.token-info {
-  flex: 1;
-}
-
-.token-info h4 {
-  font-size: 1em;
-  margin-bottom: 3px;
-}
-
-.token-info p {
-  color: var(--text-dim);
-  font-size: 0.85em;
-}
-
-.token-pct {
-  font-family: 'Orbitron', monospace;
-  font-weight: 700;
-  color: var(--accent);
-  font-size: 1.2em;
-}
-
-/* ===== ROADMAP ===== */
-.roadmap-section {
-  padding: 100px 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.timeline {
-  position: relative;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 30px;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: linear-gradient(to bottom, var(--accent), var(--cyan), var(--accent));
-  border-radius: 3px;
-}
-
-.timeline-item {
-  position: relative;
-  padding-left: 80px;
-  margin-bottom: 50px;
-}
-
-.timeline-icon {
-  position: absolute;
-  left: 14px;
-  top: 0;
-  width: 35px;
-  height: 35px;
-  background: var(--bg-dark);
-  border: 3px solid var(--accent);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1em;
-  z-index: 2;
-}
-
-.timeline-icon.completed {
-  background: var(--accent);
-  border-color: var(--accent);
-}
-
-.timeline-icon.current {
-  border-color: var(--cyan);
-  box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
-}
-
-.timeline-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  padding: 28px;
-  transition: all 0.3s ease;
-}
-
-.timeline-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 5px 30px rgba(180, 77, 255, 0.15);
-  transform: translateX(5px);
-}
-
-.timeline-phase {
-  font-family: 'Orbitron', monospace;
-  color: var(--accent);
-  font-size: 0.8em;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 8px;
-}
-
-.timeline-card h3 {
-  font-size: 1.3em;
-  margin-bottom: 12px;
-}
-
-.timeline-card ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.timeline-card ul li {
-  color: var(--text-dim);
-  font-size: 0.9em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.timeline-card ul li::before {
-  content: '→';
-  color: var(--cyan);
-  font-weight: bold;
-}
-
-/* ===== HOW TO BUY ===== */
-.howtobuy-section {
-  padding: 100px 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-}
-
-.step-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 35px 25px;
-  text-align: center;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.step-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--accent);
-  box-shadow: 0 15px 50px rgba(180, 77, 255, 0.2);
-}
-
-.step-number {
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, var(--accent), #8800ff);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Orbitron', monospace;
-  font-weight: 800;
-  font-size: 0.9em;
-}
-
-.step-icon {
-  font-size: 3em;
-  margin: 15px 0 20px;
-}
-
-.step-card h3 {
-  font-size: 1.1em;
-  margin-bottom: 10px;
-  color: var(--accent);
-}
-
-.step-card p {
-  color: var(--text-dim);
-  font-size: 0.9em;
-  line-height: 1.5;
-}
-
-/* ===== GAME SECTION ===== */
-.game-section {
-  padding: 100px 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.game-wrapper {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  border-radius: 30px;
-  padding: 50px 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-.game-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--cyan), var(--accent));
-  background-size: 200% 100%;
-  animation: gradientShift 3s ease infinite;
-}
-
-.game-title {
-  font-family: 'Orbitron', monospace;
-  font-size: 1.8em;
-  margin-bottom: 10px;
-}
-
-.game-subtitle {
-  color: var(--text-dim);
-  margin-bottom: 30px;
-}
-
-.game-stats {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-bottom: 30px;
-}
-
-.game-stat {
-  text-align: center;
-}
-
-.game-stat-label {
-  color: var(--text-dim);
-  font-size: 0.8em;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 5px;
-}
-
-.game-stat-value {
-  font-family: 'Orbitron', monospace;
-  font-size: 2em;
-  font-weight: 800;
-  background: linear-gradient(90deg, var(--accent), var(--cyan));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-#clicker-btn {
-  font-size: 100px;
-  cursor: pointer;
-  display: inline-block;
-  user-select: none;
-  transition: transform 0.1s ease;
-  filter: drop-shadow(0 0 20px rgba(180, 77, 255, 0.5));
-  line-height: 1;
-}
-
-#clicker-btn:hover {
-  filter: drop-shadow(0 0 40px rgba(180, 77, 255, 0.8));
-}
-
-#click-effects {
-  position: relative;
-  height: 60px;
-  overflow: hidden;
-}
-
-.level-bar {
-  width: 100%;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  margin-top: 20px;
-  overflow: hidden;
-}
-
-.level-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--cyan));
-  border-radius: 4px;
-  transition: width 0.3s ease;
-  width: 0%;
-}
-
-/* ===== COMMUNITY ===== */
-.community-section {
-  padding: 100px 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.social-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.social-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 40px 30px;
-  text-align: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  text-decoration: none;
-  display: block;
-}
-
-.social-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: var(--accent);
-  box-shadow: 0 15px 50px rgba(180, 77, 255, 0.2);
-}
-
-.social-card.twitter:hover {
-  border-color: #1DA1F2;
-  box-shadow: 0 15px 50px rgba(29, 161, 242, 0.3);
-}
-
-.social-card.telegram:hover {
-  border-color: #0088cc;
-  box-shadow: 0 15px 50px rgba(0, 136, 204, 0.3);
-}
-
-.social-card.pump:hover {
-  border-color: var(--cyan);
-  box-shadow: 0 15px 50px rgba(0, 255, 204, 0.3);
-}
-
-.social-icon {
-  font-size: 3em;
-  margin-bottom: 15px;
-  display: block;
-}
-
-.social-card h3 {
-  font-size: 1.2em;
-  margin-bottom: 8px;
-}
-
-.social-card p {
-  color: var(--text-dim);
-  font-size: 0.9em;
-}
-
-/* ===== CTA SECTION ===== */
-.cta-section {
-  padding: 100px 20px;
-  position
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background: #05001a; color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x:hidden; }
+
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
+  @keyframes glow { 0%,100%{text-shadow:0 0 20px #b44dff} 50%{text-shadow:0 0 50px #b44dff, 0 0 80px #7700ff} }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes gradientBG { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 20px rgba(180,77,255,0.4)} 50%{box-shadow:0 0 50px rgba(180,77,255,0.6), 0 0 100px rgba(180,77,255,0.3)} }
+  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  @keyframes wiggle { 0%,100%{transform:rotate(0deg)} 25%{transform:rotate(-5deg)} 75%{transform:rotate(5deg)} }
+  @keyframes slideInLeft { from{opacity:0;transform:translateX(-50px)} to{opacity:1;transform:translateX(0)} }
+  @keyframes slideInRight { from{opacity:0;transform:translateX(50px)} to{opacity:1;transform:translateX(0)} }
+  @keyframes scaleIn { from{opacity:0;transform:scale(0.8)} to{opacity:1;transform:scale(1)} }
+  @keyframes bounce { 0%,20%,50%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-20px)} 60%{transform:translateY(-10px)} }
+  @keyframes catTailWag { 0%,100%{transform:rotate(-10deg)} 50%{transform:rotate(10deg)} }
+  @keyframes blink { 0%,45%,55%,100%{transform:scaleY(1)} 50%{transform:scaleY(0.1)} }
+  @keyframes sparkle { 0%,100%{opacity:0;transform:scale(0)} 50%{opacity:1;transform:scale(1)} }
+  @keyframes countUp { from{opacity:0;transform:translateY(0) scale(1)} to{opacity:0;transform:translateY(-60px) scale(1.5)} }
+  @keyframes borderGlow { 0%,100%{border-color:rgba(180,77,255,0.3)} 50%{border-color:rgba(0,255,204,0.6)} }
+  @keyframes textShimmer { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+  @keyframes heartbeat { 0%,100%{transform:scale(1)} 14%{transform:scale(1.1)} 28%{transform:scale(1)} 42%{transform:scale(1.1)} 70%{transform:scale(1)} }
+
+  canvas#particles { position:fixed; top:0; left:0; z-index:0; pointer-events:none; }
+
+  nav { position:fixed; top:0; width:100%; background:rgba(5,0,26,0.92); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:15px 40px; display:flex; justify-content:space-between; align-items:center; z-index:1000; border-bottom:1px solid rgba(180,77,255,0.3); animation:borderGlow 4s ease infinite; }
+  .nav-logo { font-size:1.5rem; font-weight:900; background:linear-gradient(90deg,#b44dff,#00ffcc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; display:flex; align-items:center; gap:10px; }
+  .nav-logo span { font-size:1.8rem; }
+  .nav-links { display:flex; gap:25px; align-items:center; flex-wrap:wrap; }
+  .nav-links a { color:#ccc; text-decoration:none; font-weight:500; transition:all 0.3s; font-size:0.95rem; }
+  .nav-links a:hover { color:#b44dff; }
+  .nav-buy { padding:10px 25px; background:linear-gradient(90deg,#b44dff,#7700ff); color:#fff !important; border-radius:50px; font-weight:700; }
+  .nav-buy:hover { transform:translateY(-2px); box-shadow:0 5px 25px rgba(180,77,255,0.5); }
+
+  .hero { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:120px 20px 100px; background: linear-gradient(135deg, #05001a, #0d0040, #001a05); background-size:400% 400%; animation: gradientBG 8s ease infinite; position:relative; z-index:1; }
+  .logo-container { animation:float 3s ease-in-out infinite; margin-bottom:30px; }
+  .cat-svg { width:200px; height:200px; filter:drop-shadow(0 0 30px rgba(180,77,255,0.5)); }
+  .hero h1 { font-size:clamp(3rem,8vw,7rem); font-weight:900; background:linear-gradient(90deg,#b44dff,#00ffcc,#ff4dff,#b44dff); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:fadeIn 1s ease, textShimmer 4s linear infinite; margin-bottom:10px; line-height:1.1; }
+  .hero .subtitle { font-size:1.2rem; color:#b44dff; font-weight:600; margin-bottom:10px; animation:fadeIn 1.2s ease; letter-spacing:3px; text-transform:uppercase; }
+  .hero .slogan { font-size:1.5rem; color:#ccc; margin-bottom:40px; animation:fadeIn 1.5s ease; min-height:2.5rem; }
+  .hero .slogan .cursor { display:inline-block; width:3px; height:1.3em; background:#b44dff; margin-left:2px; animation:blink 1s infinite; vertical-align:text-bottom; }
+  .hero-buttons { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; animation:fadeIn 2s ease; }
+  .btn { display:inline-block; padding:15px 35px; margin:0; border:2px solid #b44dff; color:#b44dff; text-decoration:none; border-radius:50px; font-weight:700; font-size:1rem; transition:all 0.3s; animation:pulse 2s infinite; cursor:pointer; background:transparent; font-family:'Space Grotesk',sans-serif; }
+  .btn:hover { background:#b44dff; color:#fff; transform:translateY(-3px); }
+  .btn.primary { background:linear-gradient(90deg,#b44dff,#7700ff); color:#fff; border:none; }
+  .btn.primary:hover { transform:translateY(-3px); box-shadow:0 10px 40px rgba(180,77,255,0.5); }
+  .btn.twitter { border-color:#1DA1F2; color:#1DA1F2; }
+  .btn.twitter:hover { background:#1DA1F2; color:#fff; }
+  .btn.telegram { border-color:#0088cc; color:#0088cc; }
+  .btn.telegram:hover { background:#0088cc; color:#fff; }
+
+  .contract-address { margin-top:30px; padding:12px 25px; background:rgba(255,255,255,0.05); border:1px solid rgba(180,77,255,0.3); border-radius:15px; font-size:0.85rem; color:#888; animation:fadeIn 2.5s ease; cursor:pointer; transition:all 0.3s; }
+  .contract-address:hover { border-color:#b44dff; color:#b44dff; }
+  .contract-address span { color:#b44dff; font-weight:600; }
+
+  section { padding:100px 20px; max-width:1200px; margin:0 auto; position:relative; z-index:1; }
+  h2 { font-size:clamp(2rem,5vw,3rem); text-align:center; margin-bottom:60px; background:linear-gradient(90deg,#b44dff,#00ffcc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .section-subtitle { text-align:center; color:#999; font-size:1.1rem; margin-top:-40px; margin-bottom:50px; }
+
+  .stats-section { padding:60px 20px; position:relative; z-index:1; }
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:25px; max-width:900px; margin:0 auto; }
+  .stat-card { background:rgba(255,255,255,0.05); backdrop-filter:blur(10px); border:1px solid rgba(180,77,255,0.3); border-radius:20px; padding:35px 25px; text-align:center; transition:all 0.3s; animation:scaleIn 1s ease; }
+  .stat-card:hover { transform:translateY(-10px); border-color:#b44dff; box-shadow:0 20px 40px rgba(180,77,255,0.3); }
+  .stat-card .stat-icon { font-size:2.5rem; margin-bottom:10px; }
+  .stat-card .stat-value { font-size:2rem; font-weight:900; background:linear-gradient(90deg,#b44dff,#00ffcc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .stat-card .stat-label { color:#888; margin-top:5px; font-size:0.95rem; }
+
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
+  .card { background:rgba(255,255,255,0.05); backdrop-filter:blur(10px); border:1px solid rgba(180,77,255,0.3); border-radius:20px; padding:35px; transition:all 0.3s; }
+  .card:hover { transform:translateY(-10px); border-color:#b44dff; box-shadow:0 20px 40px rgba(180,77,255,0.3); }
+  .card .card-icon { font-size:3rem; margin-bottom:15px; display:block; }
+  .card h3 { font-size:1.4rem; margin-bottom:12px; color:#fff; }
+  .card p { color:#aaa; line-height:1.7; font-size:0.95rem; }
+
+  .tokenomics-section { text-align:center; }
+  .tokenomics-wrapper { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:60px; }
+  .tokenomics-chart { width:280px; height:280px; border-radius:50%; background: conic-gradient(#b44dff 0% 40%, #00ffcc 40% 60%, #ff4dff 60% 75%, #ffaa00 75% 85%, #00aaff 85% 100%); margin:0 auto; position:relative; animation:spin 25s linear infinite; flex-shrink:0; }
+  .tokenomics-chart::after { content:'$SKETCHKAT'; position:absolute; width:60%; height:60%; background:#0a0030; border-radius:50%; top:20%; left:20%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.9rem; color:#b44dff; animation:spin 25s linear infinite reverse; }
+  .tokenomics-list { text-align:left; }
+  .tokenomics-item { display:flex; align-items:center; gap:15px; margin-bottom:18px; font-size:1.05rem; }
+  .tokenomics-dot { width:16px; height:16px; border-radius:50%; flex-shrink:0; }
+  .tokenomics-item .tok-label { color:#ccc; }
+  .tokenomics-item .tok-percent { font-weight:700; color:#fff; margin-left:auto; min-width:40px; text-align:right; }
+
+  .timeline { position:relative; }
+  .timeline::before { content:''; position:absolute; left:30px; top:0; bottom:0; width:3px; background:linear-gradient(to bottom,#b44dff,#00ffcc); border-radius:2px; }
+  .timeline-item { display:flex; gap:30px; margin-bottom:35px; padding:30px 30px 30px 70px; background:rgba(255,255,255,0.05); border-radius:15px; border-left:4px solid #b44dff; position:relative; transition:all 0.3s; }
+  .timeline-item:hover { background:rgba(180,77,255,0.1); transform:translateX(5px); }
+  .timeline-item::before { content:''; position:absolute; left:-13px; top:35px; width:22px; height:22px; border-radius:50%; background:#b44dff; border:4px solid #05001a; }
+  .timeline-item:nth-child(2) { border-left-color:#00ffcc; }
+  .timeline-item:nth-child(2)::before { background:#00ffcc; }
+  .timeline-item:nth-child(3) { border-left-color:#ff4dff; }
+  .timeline-item:nth-child(3)::before { background:#ff4dff; }
+  .timeline-item:nth-child(4) { border-left-color:#ffaa00; }
+  .timeline-item:nth-child(4)::before { background:#ffaa00; }
+  .timeline-phase { font-size:0.85rem; font-weight:700; color:#b44dff; text-transform:uppercase; letter-spacing:2px; margin-bottom:5px; }
+  .timeline-title { font-size:1.3rem; font-weight:700; margin-bottom:8px; }
+  .timeline-desc { color:#aaa; line-height:1.6; font-size:0.95rem; }
+  .timeline-desc ul { margin-top:8px; padding-left:20px; }
+  .timeline-desc ul li { margin-bottom:4px; }
+
+  .howto-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:25px; counter-reset:step; }
+  .howto-step { background:rgba(255,255,255,0.05); border:1px solid rgba(180,77,255,0.2); border-radius:20px; padding:35px 25px; text-align:center; position:relative; transition:all 0.3s; counter-increment:step; }
+  .howto-step:hover { transform:translateY(-8px); border-color:#b44dff; box-shadow:0 15px 35px rgba(180,77,255,0.2); }
+  .howto-step::before { content:counter(step); position:absolute; top:-18px; left:50%; transform:translateX(-50%); width:36px; height:36px; background:linear-gradient(135deg,#b44dff,#7700ff); border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1rem; }
+  .howto-step .step-icon { font-size:2.5rem; margin-bottom:12px; display:block; }
+  .howto-step h3 { margin-bottom:8px; font-size:1.1rem; }
+  .howto-step p { color:#aaa; font-size:0.9rem; line-height:1.6; }
+
+  #game-section { text-align:center; padding:80px 20px; position:relative; z-index:1; }
+  .game-wrapper { max-width:600px; margin:0 auto; background:rgba(180,77,255,0.05); border:1px solid rgba(180,77,255,0.3); border-radius:30px; padding:50px 30px; position:relative; overflow:hidden; }
+  #clicker { cursor:pointer; display:inline-block; animation:float 2s ease-in-out infinite; user-select:none; transition:transform 0.1s; position:relative; }
+  #clicker:active { animation:none; transform:scale(0.85) !important; }
+  .clicker-svg { width:150px; height:150px; filter:drop-shadow(0 0 20px rgba(180,77,255,0.5)); transition:filter 0.3s; }
+  #clicker:hover .clicker-svg { filter:drop-shadow(0 0 40px rgba(180,77,255,0.8)); }
+  .score-board { font-size:2.5rem; margin:20px 0 5px; color:#b44dff; font-weight:900; }
+  .level-display { font-size:1.2rem; color:#00ffcc; font-weight:600; margin-bottom:5px; }
+  .click-instruction { color:#666; font-size:0.9rem; margin-top:15px; }
+  .progress-bar { width:80%; max-width:300px; height:8px; background:rgba(255,255,255,0.1); border-radius:10px; margin:15px auto 0; overflow:hidden; }
+  .progress-fill { height:100%; background:linear-gradient(90deg,#b44dff,#00ffcc); border-radius:10px; transition:width 0.3s; width:0%; }
+  .float-text { position:absolute; pointer-events:none; font-weight:700; color:#00ffcc; font-size:1.2rem; animation:countUp 0.8s ease forwards; z-index:10; }
+  .multiplier-info { color:#ffaa00; font-size:0.95rem; margin-top:10px; font-weight:600; }
+  .achievements { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:20px; }
+  .achievement { padding:5px 12px; background:rgba(180,77,255,0.2); border:1px solid rgba(180,77,255,0.4); border-radius:20px; font-size:0.75rem; color:#b44dff; font-weight:600; }
+  .achievement.locked { opacity:0.3; }
+
+  .community-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
+  .community-card { background:rgba(255,255,255,0.05); border:1px solid rgba(180,77,255,0.2); border-radius:20px; padding:40px 30px; text-align:center; transition:all 0.3s; }
+  .community-card:hover { transform:translateY(-8px); border-color:#b44dff; box-shadow:0 15px 35px rgba(180,77,255,0.2); }
+  .community-card .comm-icon { font-size:3rem; margin-bottom:15px; display:block; }
+  .community-card h3 { font-size:1.3rem; margin-bottom:8px; }
+  .community-card p { color:#aaa; margin-bottom:20px; font-size:0.95rem; }
+  .community-card a { color:#b44dff; text-decoration:none; font-weight:700; border-bottom:2px solid transparent; padding-bottom:2px; transition:all 0.3s; }
+  .community-card a:hover { border-bottom-color:#b44dff; }
+
+  footer { text-align:center; padding:50px 20px; border-top:1px solid rgba(180,77,255,0.2); color:#555; position:relative; z-index:1; max-width:1200px; margin:0 auto; }
+  footer .footer-logo { font-size:2rem; font-weight:900; background:linear-gradient(90deg,#b44dff,#00ffcc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:15px; }
+  footer .footer-links { display:flex; gap:25px; justify-content:center; margin-bottom:20px; flex-wrap:wrap; }
+  footer .footer-links a { color:#777; text-decoration:none; transition:color 0.3s; }
+  footer .footer-links a:hover { color:#b44dff; }
+  footer .disclaimer { font-size:0.8rem; color:#444; max-width:700px; margin:15px auto 0; line-height:1.6; }
+
+  .marquee-wrap { overflow:hidden; background:rgba(180,77,255,0.1); border-top:1px solid rgba(180,77,255,0.2); border-bottom:1px solid rgba(180,77,255,0.2); padding:12px 0; position:relative; z-index:1; }
+  .marquee-content { display:flex; gap:60px; animation:marqueeScroll 20s linear infinite; white-space:nowrap; width:max-content; }
+  @keyframes marqueeScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+  .marquee-content span { color:#b44dff; font-weight:600; font-size:0.95rem; }
+
+  .scroll-top { position:fixed; bottom:30px; right:30px; width:50px; height:50px; background:linear-gradient(135deg,#b44dff,#7700ff); border:none; border-radius:50%; color:#fff; font-size:1.5rem; cursor:pointer; z-index:999; transition:all 0.3s; display:none; }
+  .scroll-top:hover { transform:translateY(-3px); box-shadow:0 5px 25px rgba(180,77,255,0.5); }
+
+  .mobile-menu-btn { display:none; background:none; border:none; color:#b44dff; font-size:1.5rem; cursor:pointer; }
+
+  @media(max-width:768px) {
+    nav { padding:12px 15px; }
+    .nav-links { display:none; position:absolute; top:100%; left:0; width:100%; background:rgba(5,0,26,0.97); flex-direction:column; padding:20px; gap:15px; border-bottom:1px solid rgba(180,77,255,0.3); }
+    .nav-links.open { display:flex; }
+    .mobile-menu-btn { display:block; }
+    .hero h1 { font-size:clamp(2.5rem,8vw,4rem); }
+    .hero .slogan { font-size:1.1rem; }
+    .timeline-item { padding:20px 20px 20px 50px; }
+    .timeline::before { left:15px; }
+    .tokenomics-wrapper { flex-direction:column; gap:30px; }
+    .cat-svg { width:150px; height:150px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav>
+  <div class="nav-logo">
+    <span>🐱</span> $SKETCHKAT
+  </div>
+  <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#tokenomics">Tokenomics</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#howto">How to Buy</a>
+    <a href="#game-section">Game</a>
+    <a href="https://pump.fun" target="_blank" class="nav-buy">Buy Now</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="logo-container">
+    <svg class="cat-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Body -->
+      <ellipse cx="100" cy="130" rx="50" ry="40" fill="white" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Head -->
+      <circle cx="100" cy="80" r="35" fill="white" stroke="black" stroke-width="3"/>
+      <!-- Left ear -->
+      <polygon points="72,55 60,20 85,48" fill="white" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+      <polygon points="68,48 64,28 80,45" fill="#ffccdd" stroke="none"/>
+      <!-- Right ear -->
+      <polygon points="128,55 140,20 115,48" fill="white" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+      <polygon points="132,48 136,28 120,45" fill="#ffccdd" stroke="none"/>
+      <!-- Eyes -->
+      <g class="cat-eyes">
+        <ellipse cx="87" cy="78" rx="6" ry="7" fill="black">
+          <animate attributeName="ry" values="7;1;7" dur="4s" repeatCount="indefinite" begin="2s"/>
+        </ellipse>
+        <ellipse cx="113" cy="78" rx="6" ry="7" fill="black">
+          <animate attributeName="ry" values="7;1;7" dur="4s" repeatCount="indefinite" begin="2s"/>
+        </ellipse>
+        <circle cx="89" cy="76" r="2" fill="white"/>
+        <circle cx="115" cy="76" r="2" fill="white"/>
+      </g>
+      <!-- Nose -->
+      <polygon points="100,88 96,92 104,92" fill="#ffaaaa"/>
+      <!-- Mouth -->
+      <path d="M96,92 Q100,98 104,92" fill="none" stroke="black" stroke-width="2" stroke-linecap="round"/>
+      <path d="M92,93 Q88,96 82,94" fill="none" stroke="black" stroke-width="2" stroke-linecap="round"/>
+      <path d="M108,93 Q112,96 118,94" fill="none" stroke="black" stroke-width="2" stroke-linecap="round"/>
+      <!-- Whiskers -->
+      <line x1="60" y1="85" x2="82" y2="88" stroke="black" stroke-width="1.5"/>
+      <line x1="58" y1="92" x2="82" y2="92" stroke="black" stroke-width="1.5"/>
+      <line x1="118" y1="88" x2="140" y2="85" stroke="black" stroke-width="1.5"/>
+      <line x1="118" y1="92" x2="142" y2="92" stroke="black" stroke-width="1.5"/>
+      <!-- Front legs -->
+      <rect x="78" y="155" width="12" height="25" rx="6" fill="white" stroke="black" stroke-width="3"/>
+      <rect x="110" y="155" width="12" height="25" rx="6" fill="white" stroke="black" stroke-width="3"/>
+      <!-- Back legs -->
+      <ellipse cx="68" cy="158" rx="14" ry="10" fill="white" stroke="black" stroke-width="3"/>
+      <ellipse cx="132" cy="158" rx="14" ry="10" fill="white" stroke="black" stroke-width="3"/>
+      <!-- Tail -->
+      <path d="M148,130 Q175,110 165,80 Q160,70 155,75" fill="none" stroke="black" stroke-width="3" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" values="-5,148,130;5,148,130;-5,148,130" dur="1.5s" repeatCount="indefinite"/>
+      </path>
+    </svg>
+  </div>
+  <div class="subtitle">The Sketchiest Cat on Solana</div>
+  <h1>$SKETCHKAT</h1>
+  <p class="slogan"><span id="typewriter"></span><span class="cursor"></span></p>
+  <div class="hero-buttons">
+    <a href="https://pump.fun" target="_blank" class="btn primary">🚀 Buy on Pump.fun</a>
+    <a href="https://twitter.com" target="_blank" class="btn twitter">🐦 Twitter</a>
+    <a href="https://t.me" target="_blank" class="btn telegram">✈️ Telegram</a>
+  </div>
+  <div class="contract-address" onclick="copyCA()" id="ca-box">
+    <span>CA:</span> SKAT...comingsoon &nbsp;📋 Click to copy
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-content">
+    <span>🐱 $SKETCHKAT to the moon!</span>
+    <span>🚀 Fair launch on Pump.fun</span>
+    <span>💎 Community driven</span>
+    <span>✨ No presale, no VC</span>
+    <span>🎮 Play the clicker game!</span>
+    <span>🐱 $SKETCHKAT to the moon!</span>
+    <span>🚀 Fair launch on Pump.fun</span>
+    <span>💎 Community driven</span>
+    <span>✨ No presale, no VC</span>
+    <span>🎮 Play the clicker game!</span>
+    <span>🐱 $SKETCHKAT to the moon!</span>
+    <span>🚀 Fair launch on Pump.fun</span>
+    <span>💎 Community driven</span>
+    <span>✨ No presale, no VC</span>
+    <span>🎮 Play the clicker game!</span>
+  </div>
+</div>
+
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">👥</div>
+      <div class="stat-value" data-target="10000">0</div>
+      <div class="stat-label">Holders</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">💰</div>
+      <div class="stat-value">$1M+</div>
+      <div class="stat-label">Market Cap Target</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🪙</div>
+      <div class="stat-value">1B</div>
+      <div class="stat-label">Total Supply</div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <h2>What is $SKETCHKAT?</h2>
+  <p class="section-subtitle">A cute, doodle-style cat bringing chaos and charm to the Solana blockchain</p>
+  <div class="cards">
+    <div class="card">
+      <span class="card-icon">🎨</span>
+      <h3>Born from a Doodle</h3>
+      <p>SketchKat started as a simple black-and-white doodle — a chubby little kitten with big ears and a sassy attitude. Drawn on a napkin during a boring meeting, this minimalist cat captured the raw, unfiltered energy of meme culture. No fancy graphics, no over-designed logos — just pure, sketchy vibes that remind us crypto should be fun.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚡</span>
+      <h3>Community First</h3>
+      <p>$SKETCHKAT isn't just another meme token — it's a movement. Built by degens, for degens. Fair launched on Pump.fun with zero presale, zero VC funding, and zero BS. The community decides the direction, the memes, and the future. Every holder is part of the SketchKat army, and together we're drawing our path to the moon.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌐</span>
+      <h3>The Concept</h3>
+      <p>In a world of polished projects and corporate tokens, SketchKat embraces imperfection. Our concept is simple: raw authenticity wins. The doodle cat represents every crypto dreamer who started with nothing but an idea sketched out. We're building a culture around creativity, humor, and the belief that the best things in life look like they were drawn by a 5-year-old.</p>
+    </div>
+  </div>
+</section>
+
+<section id="tokenomics" class="tokenomics-section">
+  <h2>Tokenomics</h2>
+  <p class="section-subtitle">Fair distribution. Transparent allocation. Built for the long run.</p>
+  <div class="tokenomics-wrapper">
+    <div class="tokenomics-chart"></div>
+    <div class="tokenomics-list">
+      <div class="tokenomics-item">
+        <div class="tokenomics-dot" style="background:#b44dff"></div>
+        <span class="tok-label">🎉 Public Sale (Fair Launch)</span>
+        <span class="tok-percent">40%</span>
+      </div>
+      <div class="tokenomics-item">
+        <div class="tokenomics-dot" style="background:#00ffcc"></div>
+        <span class="tok-label">💧 Liquidity Pool</span>
+        <span class="tok-percent">20%</span>
+      </div>
+      <div class="tokenomics-item">
+        <div class="tokenomics-dot" style="background:#ff4dff"></div>
+        <span class="tok-label">👥 Team (Locked 6 months)</span>
+        <span class="tok-percent">15%</span>
+      </div>
+      <div class="tokenomics-item">
+        <div class="tokenomics-dot" style="background:#ffaa00"></div>
+        <span class="tok-label">📢 Marketing & Partnerships</span>
+        <span class="tok-percent">10%</span>
+      </div>
+      <div class="tokenomics-item">
+        <div class="tokenomics-dot" style="background:#00aaff"></div>
+        <span class="tok-label">🏦 Reserve / Treasury</span>
+        <span class="tok-percent">15%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <h2>Roadmap</h2>
+  <p class="section-subtitle">Our journey from a napkin sketch to global domination</p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div>
+        <div class="timeline-phase">Q1 2025 — The First Sketch</div>
+        <div class="timeline-title">🎨 Launch & Foundation</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>Fair launch on Pump.fun</li>
+            <li>Website & social media launch</li>
+            <li>Build initial community (1,000+ holders)</li>
+            <li>First meme contests & airdrops</li>
+            <li>CoinGecko & CMC listings</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div>
+        <div class="timeline-phase">Q2 2025 — Going Viral</div>
+        <div class="timeline-title">🚀 Growth & Partnerships</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>KOL partnerships & influencer campaigns</li>
+            <li>SketchKat NFT collection (hand-drawn doodles)</li>
+            <li>DEX trending & volume milestones</li>
+            <li>Community governance voting</li>
+            <li>Merchandise store launch</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div>
+        <div class="timeline-phase">Q3 2025 — Expanding the Canvas</div>
+        <div class="timeline-title">🎮 Utility & Ecosystem</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>SketchKat mini-game with token rewards</li>
+            <li>Staking platform for $SKETCHKAT holders</li>
+            <li>Cross-chain bridge explorations</li>
+            <li>CEX listing applications</li>
+            <li>SketchKat DAO formation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div>
+        <div class="timeline-phase">Q4 2025 — The Masterpiece</div>
+        <div class="timeline-title">🌍 Global Adoption</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>Major CEX listings</li>
+            <li>SketchKat animated series/shorts</li>
+            <li>Real-world events & community meetups</li>
+            <li>Charity initiatives (animal shelters)</li>
+            <li>The cat takes over the world 🐱👑</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <h2>How to Buy</h2>
+  <p class="section-subtitle">Get your $SKETCHKAT in 4 simple steps</p>
+  <div class="howto-grid">
+    <div class="howto-step">
+      <span class="step-icon">👛</span>
+      <h3>Create a Wallet</h3>
+      <p>Download Phantom or Solflare wallet. Set it up, save your seed phrase somewhere safe. Never share it with anyone!</p>
+    </div>
+    <div class="howto-step">
+      <span class="step-icon">💳</span>
+      <h3>Get Some SOL</h3>
+      <p>Buy SOL on any exchange (Binance, Coinbase, etc.) and send it to your Phantom wallet address.</p>
+    </div>
+    <div class="howto-step">
+      <span class="step-icon">🔗</span>
+      <h3>Go to Pump.fun</h3>
+      <p>Visit pump.fun and connect your wallet. Search for $SKETCHKAT or paste our contract address.</p>
+    </div>
+    <div class="howto-step">
+      <span class="step-icon">🐱</span>
+      <h3>Swap & HODL</h3>
+      <p>Enter the amount of SOL you want to swap, confirm the transaction, and welcome to the SketchKat army! 🎉</p>
+    </div>
+  </div>
+</section>
+
+<section id="game-section">
+  <h2>🎮 SketchKat Clicker</h2>
+  <p class="section-subtitle">Click the cat. Earn tokens. Flex on your friends.</p>
+  <div class="game-wrapper" id="game-wrapper">
+    <div class="level-display">Level: <span id="level">1</span> — <span id="level-name">Stray Kitten</span></div>
+    <div id="clicker">
+      <svg class="clicker-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="130" rx="50" ry="40" fill="white" stroke="black" stroke-width="3"/>
+        <circle cx="100" cy="80" r="35" fill="white" stroke="black" stroke-width="3"/>
+        <polygon points="72,55 60,20 85,48" fill="white" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+        <polygon points="68,48 64,28 80,45" fill="#ffccdd"/>
+        <polygon points="128,55 140,20 115,48" fill="white" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+        <polygon points="132,48 136,28 120,45" fill="#ffccdd"/>
+        <ellipse cx="87" cy="78" rx="6" ry="7" fill="black"/>
+        <ellipse cx="113" cy="78" rx="6" ry="7" fill="black"/>
+        <circle cx="89" cy="76" r="2" fill="white"/>
+        <circle cx="115" cy="76" r="2" fill="white"/>
+        <polygon points="100,88 96,92 104,92" fill="#ffaaaa"/>
+        <path d="M96,92 Q100,98 104,92" fill="none" stroke="black" stroke-width="2" stroke-linecap="round"/>
+        <line x1="60" y1="85" x2="82" y2="88" stroke="black" stroke-width="1.5"/>
+        <line x1="58" y1="92" x2="82" y2="92" stroke="black" stroke-width="1.5"/>
+        <line x1="118" y1="88" x2="140" y2="85" stroke="black" stroke-width="1.5"/>
+        <line x1="118" y1="92" x2="142" y2="92" stroke="black" stroke-width="1.5"/>
+        <rect x="78" y="155" width="12" height="25" rx="6" fill="white" stroke="black" stroke-width="3"/>
+        <rect x="110" y="155" width="12" height="25" rx="6" fill="white" stroke="black" stroke-width="3"/>
+        <ellipse cx="68" cy="158" rx="14" ry="10" fill="white" stroke="black" stroke-width="3"/>
+        <ellipse cx="132" cy="158" rx="14" ry="10" fill="white" stroke="black" stroke-width="3"/>
+        <path d="M148,130 Q175,110 165,80 Q160,70 155,75" fill="none" stroke="black" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="score-board">🪙 <span id="score">0</span> $SKAT</div>
+    <div class="multiplier-info">Multiplier: x<span id="multiplier">1</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="click-instruction">Click the cat to earn $SKETCHKAT tokens!</div>
+    <div class="achievements" id="achievements">
+      <div class="achievement locked" data-req="10">🐾 First Paw (10)</div>
+      <div class="achievement locked" data-req="50">😺 Curious Cat (50)</div>
+      <div class="achievement locked" data-req="100">😸 Happy Cat (100)</div>
+      <div class="achievement locked" data-req="250">🙀 Hyper Cat (250)</div>
+      <div class="achievement locked" data-req="500">😻 Love Cat (500)</div>
+      <div class="achievement locked" data-req="1000">👑 Cat King (1000)</div>
+    </div>
+  </div>
+</section>
+
+<section id="community">
+  <h2>Join the Colony</h2>
+  <p class="section-subtitle">Connect with fellow SketchKat enthusiasts</p>
+  <div class="community-grid">
+    <div class="community-card">
+      <span class="comm-icon">🐦</span>
+      <h3>Twitter / X</h3>
+      <p>Follow us for the latest memes, updates, and alpha. We post sketches, not promises.</p>
+      <a href="https://twitter.com" target="_blank">@SketchKatSol →</a>
+    </div>
+    <div class="community-card">
+      <span class="comm-icon">✈️</span>
+      <h3>Telegram</h3>
+      <p>Join our active Telegram community. Chat with other holders, share memes, and vibe with the cat.</p>
+      <a href="https://t.me" target="_blank">Join Telegram →</a>
+    </div>
+    <div class="community-card">
+      <span class="comm-icon">🎯</span>
+      <h3>Pump.fun</h3>
+      <p>Trade $SKETCHKAT directly on Pump.fun. Fair launch, transparent bonding curve, no BS.</p>
+      <a href="https://pump.fun" target="_blank">Trade Now →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">$SKETCHKAT 🐱</div>
+  <div class="footer-links">
+    <a href="https://pump.fun" target="_blank">Pump.fun</a>
+    <a href="https://twitter.com" target="_blank">Twitter</a>
+    <a href="https://t.me" target="_blank">Telegram</a>
+    <a href="#about">About</a>
+    <a href="#tokenomics">Tokenomics</a>
+    <a href="#roadmap">Roadmap</a>
+  </div>
+  <p style="color:#777; margin-bottom:15px;">© 2025 SketchKat. All rights reserved. Meow.</p>
+  <p class="disclaimer">⚠️ Disclaimer: $SKETCHKAT is a meme token with no intrinsic value or expectation of financial return. This token is created purely for entertainment purposes. It is not a security, investment, or financial instrument. Trading cryptocurrencies involves significant risk, and you may lose all of your invested capital. Always do your own research (DYOR). Not financial advice. Just a cat on a blockchain.</p>
+</footer>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ==================== PARTICLES ====================
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particlesArray = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2.5 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.5;
+    this.speedY = (Math.random() - 0.5) * 0.5;
+    this.opacity = Math.random() * 0.5 + 0.1;
+    this.color = Math.random() > 0.5 ? '180,77,255' : '0,255,204';
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < 0) this.x = canvas.width;
+    if (this.x > canvas.width) this.x = 0;
+    if (this.y < 0) this.y = canvas.height;
+    if (this.y > canvas.height) this.y = 0;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${this.color},${this.opacity})`;
+    ctx.fill();
+  }
+}
+
+function initParticles() {
+  particlesArray = [];
+  const count = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
+  for (let i = 0; i < count; i++) {
+    particlesArray.push(new Particle());
+  }
+}
+initParticles();
+
+function connectParticles() {
+  for (let a = 0; a < particlesArray.length; a++) {
+    for (let b = a + 1; b < particlesArray.length; b++) {
+      const dx = particlesArray[a].x - particlesArray[b].x;
+      const dy = particlesArray[a].y - particlesArray[b].y;
+      const dist = dx * dx + dy * dy;
+      if (dist < 15000) {
+        const opacity = 0.08 * (1 - dist / 15000);
+        ctx.strokeStyle = `rgba(180,77,255,${opacity})`;
+        ctx.lineWidth = 0.5;
+        ctx.beginPath();
+        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particlesArray.forEach(p => { p.update(); p.draw(); });
+  connectParticles();
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ==================== TYPEWRITER ====================
+const slogans = [
+  "The cutest degen cat on Solana 🐱",
+  "Sketched on a napkin. Launched on the blockchain. 🚀",
+  "No presale. No VC. Just vibes. ✨",
+  "From doodle to diamond hands. 💎",
+  "Meow your way to the moon. 🌙"
+];
+let sloganIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typewriterEl = document.getElementById('typewriter');
+
+function typeWriter() {
+  const current = slogans[sloganIndex];
+  if (!isDeleting) {
+    typewriterEl.textContent = current.substring(0, charIndex + 1);
+    charIndex++;
+    if (charIndex === current.length) {
+      isDeleting = true;
+      setTimeout(typeWriter, 2500);
+      return;
+    }
+    setTimeout(typeWriter, 60);
+  } else {
+    typewriterEl.textContent = current.substring(0, charIndex - 1);
+    charIndex--;
+    if (charIndex === 0) {
+      isDeleting = false;
+      sloganIndex = (sloganIndex + 1) % slogans.length;
+      setTimeout(typeWriter, 400);
+      return;
+    }
+    setTimeout(typeWriter, 30);
+  }
+}
+typeWriter();
+
+// ==================== CLICKER GAME ====================
+let score = 0;
+let level = 1;
+let multiplier = 1;
+const levelNames = [
+  'Stray Kitten', 'Curious Cat', 'Playful Cat', 'Smart Cat', 'Ninja Cat',
+  'Golden Cat', 'Diamond Cat', 'Legendary Cat', 'Cosmic Cat', 'Cat God'
+];
+
+const clicker = document.getElementById('clicker');
+const scoreEl = document.getElementById('score');
+const levelEl = document.getElementById('level');
+const levelNameEl = document.getElementById('level-name');
+const multiplierEl = document.getElementById('multiplier');
+const progressFill = document.getElementById('progress-fill');
+const gameWrapper = document.getElementById('game-wrapper');
+
+clicker.addEventListener('click', function(e) {
+  const points = multiplier;
+  score += points;
+  scoreEl.textContent = score.toLocaleString();
+
+  // Float text
+  const floatText = document.createElement('div');
+  floatText.className = 'float-text';
+  floatText.textContent = `+${points}`;
+  const rect = gameWrapper.getBoundingClientRect();
+  floatText.style.left = (e.clientX - rect.left - 15) + 'px';
+  floatText.style.top = (e.clientY - rect.top - 15) + 'px';
+  gameWrapper.appendChild(floatText);
+  setTimeout(() => floatText.remove(), 800);
+
+  // Level up
+  const newLevel = Math.floor(score / 100) + 1;
+  if (newLevel !== level && newLevel <= 10) {
+    level = newLevel;
+    multiplier = level;
+    levelEl.textContent = level;
+    levelNameEl.textContent = levelNames[Math.min(level - 1, levelNames.length - 1)];
+    multiplierEl.textContent = multiplier;
+    gameWrapper.style.borderColor = '#00ffcc';
+    setTimeout(() => { gameWrapper.style.borderColor = 'rgba(180,77,255,0.3)'; }, 500);
+  }
+
+  // Progress bar
+  const progress = (score % 100);
+  progressFill.style.width = progress + '%';
+
+  // Achievements
+  const achievements = document.querySelectorAll('.achievement');
+  achievements.forEach(a => {
+    const req = parseInt(a.getAttribute('data-req'));
+    if (score >= req) {
+      a.classList.remove('locked');
+    }
+  });
+});
+
+// ==================== SCROLL TO TOP ====================
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 500) {
+    scrollTopBtn.style.display = 'block';
+  } else {
+    scrollTopBtn.style.display = 'none';
+  }
+});
+
+// ==================== COPY CA ====================
+function copyCA() {
+  const ca = 'SKAT...comingsoon';
+  navigator.clipboard.writeText(ca).then(() => {
+    const box = document.getElementById('ca-box');
+    box.innerHTML = '<span>CA:</span> Copied! ✅';
+    setTimeout(() => {
+      box.innerHTML = '<span>CA:</span> SKAT...comingsoon &nbsp;📋 Click to copy';
+    }, 2000);
+  }).catch(() => {});
+}
+
+// ==================== SMOOTH SCROLL ====================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    document.querySelector('.nav-links').classList.remove('open');
+  });
+});
+
+// ==================== COUNTER ANIMATION FOR STATS ====================
+let statAnimated = false;
+function animateStats() {
+  if (statAnimated) return;
+  const statValues = document.querySelectorAll('.stat-value[data-target]');
+  statValues.forEach(el => {
+    const target = parseInt(el.getAttribute('data-target'));
+    let current = 0;
+    const increment = Math.ceil(target / 60);
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = current.toLocaleString() + '+';
+    }, 30);
+  });
+  statAnimated = true;
+}
+
+const statsSection = document.querySelector('.stats-section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateStats();
+    }
+  });
+}, { threshold: 0.5 });
+if (statsSection) observer.observe(statsSection);
+</script>
+</body>
+</html>
