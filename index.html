@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$MOONCAT - The Ultimate Meme Token 🚀</title>
+    <title>MEOW COIN - The Purrfect Meme Token</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,11 +12,21 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #ff00ff;
+            --secondary: #00ffff;
+            --accent: #ffff00;
+            --dark: #0a0a1a;
+            --dark-light: #1a1a2e;
+            --glow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a1f 0%, #1a0a2e 50%, #16213e 100%);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a2e 100%);
             color: #fff;
             overflow-x: hidden;
+            position: relative;
         }
 
         .stars {
@@ -30,6 +41,8 @@
 
         .star {
             position: absolute;
+            width: 2px;
+            height: 2px;
             background: white;
             border-radius: 50%;
             animation: twinkle 3s infinite;
@@ -40,36 +53,227 @@
             50% { opacity: 1; }
         }
 
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 26, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: var(--glow);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 5rem 10%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 8rem;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 6rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 3s ease infinite;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .typewriter {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            border-right: 2px solid var(--secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: typing 3.5s steps(40) 1s 1 normal both, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .hero-logo {
+            width: 400px;
+            height: auto;
+            margin: 2rem 0;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 0, 255, 0.7));
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
         }
 
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .btn {
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(255, 0, 255, 0.8);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .glass-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(255, 0, 255, 0.3);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tokenomics {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+
+        .pie-chart {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--primary) 0deg 144deg,
+                var(--secondary) 144deg 216deg,
+                var(--accent) 216deg 288deg,
+                #ff6b6b 288deg 360deg
+            );
+            box-shadow: 0 0 50px rgba(255, 0, 255, 0.5);
+            animation: rotate 20s linear infinite;
         }
 
         @keyframes rotate {
@@ -77,431 +281,198 @@
             to { transform: rotate(360deg); }
         }
 
-        nav {
-            position: fixed;
-            width: 100%;
-            background: rgba(10, 10, 31, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            z-index: 1000;
-            border-bottom: 2px solid #ff6b35;
+        .tokenomics-list {
+            list-style: none;
         }
 
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #ff6b35;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .tokenomics-list li {
+            font-size: 1.3rem;
+            margin: 1rem 0;
+            padding-left: 2rem;
             position: relative;
-            z-index: 2;
         }
 
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding-top: 80px;
+        .tokenomics-list li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            font-size: 2rem;
         }
 
-        .hero-content {
-            animation: slideInLeft 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 80px;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: pulse 2s infinite;
-        }
-
-        .hero-cat {
-            font-size: 150px;
-            animation: float 3s ease-in-out infinite;
-            margin: 30px 0;
-            filter: drop-shadow(0 0 30px #ff6b35);
-        }
-
-        .hero p {
-            font-size: 24px;
-            margin-bottom: 40px;
-            color: #ffd700;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 15px 40px;
-            font-size: 18px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            font-weight: bold;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
-            color: white;
-            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.6);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid #ffd700;
-            color: #ffd700;
-        }
-
-        .btn-secondary:hover {
-            background: #ffd700;
-            color: #0a0a1f;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        h2 {
-            font-size: 48px;
-            text-align: center;
-            margin-bottom: 60px;
-            background: linear-gradient(45deg, #ff6b35, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 107, 53, 0.3);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: #ff6b35;
-            box-shadow: 0 10px 40px rgba(255, 107, 53, 0.3);
-        }
-
-        .card-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #ffd700;
-        }
-
-        .card p {
-            color: #ccc;
-            line-height: 1.6;
-        }
-
-        .tokenomics {
-            background: rgba(255, 107, 53, 0.05);
-            border-radius: 30px;
-            padding: 50px;
-            margin: 40px 0;
-        }
-
-        .tokenomics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
-        .token-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 15px;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-        }
-
-        .token-item h3 {
-            font-size: 36px;
-            color: #ff6b35;
-            margin-bottom: 10px;
-        }
+        .tokenomics-list li:nth-child(1)::before { color: var(--primary); }
+        .tokenomics-list li:nth-child(2)::before { color: var(--secondary); }
+        .tokenomics-list li:nth-child(3)::before { color: var(--accent); }
+        .tokenomics-list li:nth-child(4)::before { color: #ff6b6b; }
 
         .roadmap {
-            position: relative;
-        }
-
-        .roadmap-timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         .roadmap-item {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 50px;
-            animation: slideInRight 1s ease-out;
+            position: relative;
+            padding-left: 3rem;
         }
 
-        .roadmap-number {
-            font-size: 48px;
-            font-weight: bold;
-            color: #ff6b35;
-            min-width: 80px;
-        }
-
-        .roadmap-content {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 4px solid #ffd700;
-            flex: 1;
-        }
-
-        .roadmap-content h3 {
-            color: #ffd700;
-            margin-bottom: 15px;
-        }
-
-        .roadmap-content ul {
-            list-style: none;
-            padding-left: 20px;
-        }
-
-        .roadmap-content li {
-            margin-bottom: 10px;
-            color: #ccc;
-        }
-
-        .roadmap-content li:before {
-            content: "🚀 ";
-            margin-right: 10px;
-        }
-
-        .game-container {
-            background: rgba(255, 107, 53, 0.1);
-            border-radius: 30px;
-            padding: 50px;
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .game-board {
-            display: inline-block;
-            background: rgba(10, 10, 31, 0.8);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 30px 0;
-        }
-
-        .cat-catcher {
-            display: grid;
-            grid-template-columns: repeat(4, 100px);
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .cat-box {
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid #ff6b35;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .cat-box:hover {
-            background: rgba(255, 107, 53, 0.3);
-            transform: scale(1.1);
-        }
-
-        .cat-box.active {
-            animation: pulse 0.5s;
-        }
-
-        .game-score {
-            font-size: 32px;
-            color: #ffd700;
-            margin: 20px 0;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .social-btn {
-            width: 80px;
-            height: 80px;
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 3px solid;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
         }
 
-        .social-btn.twitter {
-            background: #1DA1F2;
-            border-color: #1DA1F2;
-        }
-
-        .social-btn.telegram {
-            background: #0088cc;
-            border-color: #0088cc;
-        }
-
-        .social-btn:hover {
-            transform: scale(1.2) rotate(360deg);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            background: rgba(10, 10, 31, 0.9);
-            margin-top: 100px;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .hero-cat {
-                font-size: 100px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            h2 {
-                font-size: 36px;
-            }
-
-            .cat-catcher {
-                grid-template-columns: repeat(3, 80px);
-            }
-
-            .cat-box {
-                width: 80px;
-                height: 80px;
-            }
-
-            .tokenomics {
-                padding: 30px 20px;
-            }
-        }
-
-        .spinning-coin {
-            display: inline-block;
-            animation: rotate 3s linear infinite;
+        .roadmap-item h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--secondary);
+            margin-bottom: 1rem;
         }
 
         .how-to-buy {
-            background: rgba(255, 215, 0, 0.05);
-            border-radius: 30px;
-            padding: 50px;
-        }
-
-        .steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         .step {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 20px;
             text-align: center;
-            border: 2px solid rgba(255, 107, 53, 0.3);
-            transition: all 0.3s;
-        }
-
-        .step:hover {
-            transform: translateY(-10px);
-            border-color: #ffd700;
         }
 
         .step-number {
             width: 60px;
             height: 60px;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            margin: 0 auto 1rem;
             border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            font-weight: bold;
-            margin: 0 auto 20px;
+            font-size: 2rem;
+            font-weight: 900;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+        }
+
+        .game-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .game-character {
+            width: 300px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.1s;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 255, 0.5));
+        }
+
+        .game-character:active {
+            transform: scale(0.95);
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 3rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .click-effect {
+            position: fixed;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+            pointer-events: none;
+            animation: floatUp 1s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes floatUp {
+            to {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            transform: scale(1.2) rotate(360deg);
+            box-shadow: 0 0 30px var(--primary);
+        }
+
+        footer {
+            background: rgba(10, 10, 26, 0.9);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 0, 255, 0.3);
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .counter {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            .section-title { font-size: 2rem; }
+            nav ul { gap: 1rem; }
+            .hero-logo { width: 250px; }
+            .cta-buttons { flex-direction: column; }
         }
     </style>
 </head>
@@ -509,23 +480,277 @@
     <div class="stars" id="stars"></div>
 
     <nav>
-        <div class="container">
-            <div class="logo">🐱 $MOONCAT</div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#tokenomics">Tokenomics</a>
-                <a href="#roadmap">Roadmap</a>
-                <a href="#game">Game</a>
-                <a href="#buy">Buy</a>
-            </div>
-        </div>
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#tokenomics">TOKENOMICS</a></li>
+            <li><a href="#roadmap">ROADMAP</a></li>
+            <li><a href="#how-to-buy">HOW TO BUY</a></li>
+            <li><a href="#game">GAME</a></li>
+            <li><a href="#community">COMMUNITY</a></li>
+        </ul>
     </nav>
 
     <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>$MOONCAT</h1>
-                <div class="hero-cat">🐱🚀</div>
-                <p>The Cat That's Going to the Moon! 🌙</p>
-                <p style="font-
+        <h1 class="hero-title">MEOW COIN</h1>
+        <div class="typewriter">The Purrfect Meme Token on Solana</div>
+        <img class="hero-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="MEOW COIN" id="heroLogo">
+        <div class="cta-buttons">
+            <a href="https://pump.fun" class="btn btn-primary" target="_blank">BUY ON PUMP.FUN</a>
+            <a href="https://twitter.com" class="btn btn-secondary" target="_blank">TWITTER</a>
+            <a href="https://t.me" class="btn btn-secondary" target="_blank">TELEGRAM</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">ABOUT MEOW COIN</h2>
+        <div class="about-content">
+            <div class="glass-card">
+                <h3 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem;">🐱 The Legend</h3>
+                <p>Born from the depths of internet culture, MEOW COIN represents the ultimate fusion of feline charm and blockchain innovation. This isn't just another meme token - it's a movement.</p>
+            </div>
+            <div class="glass-card">
+                <h3 style="font-size: 1.8rem; color: var(--secondary); margin-bottom: 1rem;">⚡ Why MEOW?</h3>
+                <p>Cats rule the internet. Memes drive culture. Solana powers the future. MEOW COIN combines all three into the most purrfect investment opportunity of 2024.</p>
+            </div>
+            <div class="glass-card">
+                <h3 style="font-size: 1.8rem; color: var(--accent); margin-bottom: 1rem;">🚀 The Mission</h3>
+                <p>To create a vibrant, engaged community of cat lovers and crypto enthusiasts who believe in the power of memes, fun, and financial freedom.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tokenomics">
+        <h2 class="section-title">TOKENOMICS</h2>
+        <div class="tokenomics">
+            <div class="pie-chart"></div>
+            <ul class="tokenomics-list">
+                <li><strong>40%</strong> - Community & Airdrop</li>
+                <li><strong>20%</strong> - Liquidity Pool</li>
+                <li><strong>20%</strong> - Marketing & Partnerships</li>
+                <li><strong>20%</strong> - Team & Development</li>
+            </ul>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <div class="glass-card" style="display: inline-block; max-width: 600px;">
+                <h3 style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;">Total Supply</h3>
+                <p class="counter" id="supplyCounter">0</p>
+                <p style="margin-top: 1rem;">1 Billion MEOW Tokens</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap">
+        <h2 class="section-title">ROADMAP</h2>
+        <div class="roadmap">
+            <div class="glass-card roadmap-item">
+                <h3>Q1 2024 - LAUNCH</h3>
+                <ul style="margin-top: 1rem; line-height: 2;">
+                    <li>✅ Token Creation on Pump.fun</li>
+                    <li>✅ Website Launch</li>
+                    <li>✅ Social Media Presence</li>
+                    <li>✅ Community Building</li>
+                    <li>✅ Initial Marketing Push</li>
+                </ul>
+            </div>
+            <div class="glass-card roadmap-item">
+                <h3>Q2 2024 - GROWTH</h3>
+                <ul style="margin-top: 1rem; line-height: 2;">
+                    <li>🔄 DEX Listings</li>
+                    <li>🔄 Influencer Partnerships</li>
+                    <li>🔄 10,000+ Holders</li>
+                    <li>🔄 NFT Collection Drop</li>
+                    <li>🔄 Staking Platform</li>
+                </ul>
+            </div>
+            <div class="glass-card roadmap-item">
+                <h3>Q3 2024 - EXPANSION</h3>
+                <ul style="margin-top: 1rem; line-height: 2;">
+                    <li>📅 CEX Listings</li>
+                    <li>📅 Mobile App Launch</li>
+                    <li>📅 Major Partnerships</li>
+                    <li>📅 Global Marketing</li>
+                    <li>📅 100,000+ Holders</li>
+                </ul>
+            </div>
+            <div class="glass-card roadmap-item">
+                <h3>Q4 2024 - DOMINATION</h3>
+                <ul style="margin-top: 1rem; line-height: 2;">
+                    <li>📅 Metaverse Integration</li>
+                    <li>📅 MEOW Swap Launch</li>
+                    <li>📅 Billboard Campaigns</li>
+                    <li>📅 1M+ Holders</li>
+                    <li>📅 Moon Mission Complete</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-to-buy">
+        <h2 class="section-title">HOW TO BUY</h2>
+        <div class="how-to-buy">
+            <div class="glass-card step">
+                <div class="step-number">1</div>
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Get a Wallet</h3>
+                <p>Download Phantom or Solflare wallet for your device</p>
+            </div>
+            <div class="glass-card step">
+                <div class="step-number">2</div>
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;">Buy SOL</h3>
+                <p>Purchase Solana from an exchange and send to your wallet</p>
+            </div>
+            <div class="glass-card step">
+                <div class="step-number">3</div>
+                <h3 style="color: var(--accent); margin-bottom: 1rem;">Visit Pump.fun</h3>
+                <p>Navigate to pump.fun and connect your wallet</p>
+            </div>
+            <div class="glass-card step">
+                <div class="step-number">4</div>
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Swap for MEOW</h3>
+                <p>Search for MEOW COIN and swap your SOL</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="game">
+        <h2 class="section-title">MEOW CLICKER GAME</h2>
+        <div class="game-container">
+            <p style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--secondary);">Click the cat to earn MEOW tokens!</p>
+            <img class="game-character" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Click Me!" id="gameChar">
+            <div class="game-stats">
+                <div class="stat-box">
+                    <div>MEOW TOKENS</div>
+                    <div class="stat-number" id="tokenCount">0</div>
+                </div>
+                <div class="stat-box">
+                    <div>LEVEL</div>
+                    <div class="stat-number" id="level">1</div>
+                </div>
+                <div class="stat-box">
+                    <div>CLICKS</div>
+                    <div class="stat-number" id="clickCount">0</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="community">
+        <h2 class="section-title">JOIN THE COMMUNITY</h2>
+        <p style="text-align: center; font-size: 1.3rem; margin-bottom: 2rem;">Be part of the MEOW revolution!</p>
+        <div class="social-links">
+            <a href="https://twitter.com" class="social-link" target="_blank" title="Twitter">𝕏</a>
+            <a href="https://t.me" class="social-link" target="_blank" title="Telegram">✈</a>
+            <a href="https://pump.fun" class="social-link" target="_blank" title="Pump.fun">🚀</a>
+            <a href="https://discord.com" class="social-link" target="_blank" title="Discord">💬</a>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <div class="glass-card" style="display: inline-block; max-width: 700px;">
+                <h3 style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;">📊 Live Stats</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div>
+                        <div style="font-size: 2rem; color: var(--secondary);" class="counter" id="holdersCount">0</div>
+                        <div>HOLDERS</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; color: var(--accent);" class="counter" id="txCount">0</div>
+                        <div>TRANSACTIONS</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; color: var(--primary);" class="counter" id="mcapCount">$0</div>
+                        <div>MARKET CAP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 1.2rem; margin-bottom: 1rem;">© 2024 MEOW COIN. All rights reserved.</p>
+        <p class="disclaimer">
+            DISCLAIMER: MEOW COIN is a meme token created for entertainment purposes. Cryptocurrency investments carry risk. 
+            Please do your own research before investing. This is not financial advice. Trade responsibly and never invest more than you can afford to lose.
+        </p>
+    </footer>
+
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.glass-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Counter animation
+        function animateCounter(element, target, duration = 2000, prefix = '', suffix = '') {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = prefix + target.toLocaleString() + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = prefix + Math.floor(start).toLocaleString() + suffix;
+                }
+            }, 16);
+        }
+
+        // Animate counters on scroll
+        const supplyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    entry.target.dataset.animated = 'true';
+                    if (entry.target.id === 'supplyCounter') {
+                        animateCounter(entry.target, 1000000000);
+                    } else if (entry.target.id === 'holdersCount') {
+                        animateCounter(entry.target, 15420);
+                    } else if (entry.target.id === 'txCount') {
+                        animateCounter(entry.target, 89234);
+                    } else if (entry.target.id === 'mcapCount') {
+                        animateCounter(entry.target, 2500000, 2000, '$');
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            supplyObserver.observe(counter);
+        });
+
+        // Game logic
+        let tokens = 0;
+        let clicks = 0;
+        let level = 1;
+
+        const gameChar = document.getElementById('gameChar');
+        const tokenCountEl = document.getElementById('tokenCount');
+        const clickCountEl = document.getElementById('clickCount');
+        const levelEl = document.getElementById('level');
