@@ -3,894 +3,993 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TOKEN Token - To the moon and back</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>$SHIT — ShitSite | The Worst Site. The Best Token.</title>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
---primary: #7b2fff;
---secondary: #00ffcc;
---bg-start: #05001a;
---bg-end: #0a0030;
---glow: rgba(123, 47, 255, 0.8);
+  --primary: #8B4513;
+  --secondary: #39FF14;
+  --bg-start: #0d0800;
+  --bg-end: #1a0f00;
+  --glow: rgba(139, 69, 19, 0.75);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  color: #e0d5c0;
+  font-family: 'Space Mono', monospace;
+  overflow-x: hidden;
+  min-height: 100vh;
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='28' font-size='28'>💩</text></svg>") 16 16, auto;
 }
 
 @keyframes float {
-0%, 100% { transform: translateY(0) rotate(-2deg); }
-50% { transform: translateY(-20px) rotate(2deg); }
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
 }
 
 @keyframes textGlow {
-0%, 100% { text-shadow: 0 0 20px var(--glow); }
-50% { text-shadow: 0 0 60px var(--glow), 0 0 100px var(--glow); }
+  0%, 100% { text-shadow: 0 0 20px var(--glow); }
+  50% { text-shadow: 0 0 60px var(--glow), 0 0 100px var(--glow); }
 }
 
 @keyframes fadeInUp {
-from { opacity: 0; transform: translateY(40px); }
-to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes btnPulse {
-0%, 100% { box-shadow: 0 0 20px var(--glow); }
-50% { box-shadow: 0 0 50px var(--glow), 0 0 100px var(--glow); }
+  0%, 100% { box-shadow: 0 0 20px var(--glow); }
+  50% { box-shadow: 0 0 50px var(--glow), 0 0 100px var(--glow); }
 }
 
-@keyframes bouncy {
-0%, 100% { transform: scale(1) translateY(0); }
-25% { transform: scale(1.05) translateY(-10px); }
-50% { transform: scale(0.97) translateY(0); }
-75% { transform: scale(1.02) translateY(-5px); }
+@keyframes chaoticShake {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  10% { transform: translate(-5px, -3px) rotate(-3deg) scale(1.02); }
+  20% { transform: translate(4px, 5px) rotate(2deg) scale(0.98); }
+  30% { transform: translate(-3px, 2px) rotate(-1deg) scale(1.01); }
+  40% { transform: translate(6px, -4px) rotate(4deg) scale(1.03); }
+  50% { transform: translate(-2px, 3px) rotate(-2deg) scale(0.99); }
+  60% { transform: translate(3px, -5px) rotate(3deg) scale(1.02); }
+  70% { transform: translate(-4px, 1px) rotate(-4deg) scale(0.97); }
+  80% { transform: translate(5px, 4px) rotate(1deg) scale(1.01); }
+  90% { transform: translate(-1px, -2px) rotate(-3deg) scale(1.03); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+
+@keyframes glitchFlicker {
+  0%, 100% { opacity: 1; }
+  3% { opacity: 0.4; }
+  6% { opacity: 1; }
+  42% { opacity: 1; }
+  43% { opacity: 0.2; transform: skewX(2deg); }
+  44% { opacity: 1; transform: skewX(0); }
+  85% { opacity: 1; }
+  86% { opacity: 0.6; transform: skewX(-3deg); }
+  87% { opacity: 1; transform: skewX(0); }
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }
 
 @keyframes spin {
-from { transform: rotate(0deg); }
-to { transform: rotate(360deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-@keyframes typewriterCursor {
-0%, 100% { border-right-color: var(--secondary); }
-50% { border-right-color: transparent; }
+@keyframes flushVortex {
+  0% { transform: rotate(0deg) scale(1); opacity: 1; filter: blur(0); }
+  50% { transform: rotate(720deg) scale(0.5); opacity: 0.7; filter: blur(3px); }
+  100% { transform: rotate(1440deg) scale(0); opacity: 0; filter: blur(10px); }
 }
 
-@keyframes slideInLeft {
-from { opacity: 0; transform: translateX(-60px); }
-to { opacity: 1; transform: translateX(0); }
+@keyframes marqueeScroll {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
 }
 
-@keyframes slideInRight {
-from { opacity: 0; transform: translateX(60px); }
-to { opacity: 1; transform: translateX(0); }
+@keyframes neonFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary), 0 0 40px var(--secondary);
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.6;
+  }
 }
 
-@keyframes pulseRing {
-0% { transform: scale(0.8); opacity: 1; }
-100% { transform: scale(2.5); opacity: 0; }
+@keyframes rainbowShit {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
 }
 
-@keyframes countPop {
-0% { transform: scale(1); }
-50% { transform: scale(1.3); }
-100% { transform: scale(1); }
+@keyframes pileUp {
+  from { transform: translateY(-100vh) rotate(0deg); }
+  to { transform: translateY(0) rotate(720deg); }
 }
 
-@keyframes rocketFly {
-0% { transform: translateY(0) rotate(0deg); }
-25% { transform: translateY(-15px) rotate(5deg); }
-50% { transform: translateY(-5px) rotate(-3deg); }
-75% { transform: translateY(-20px) rotate(3deg); }
-100% { transform: translateY(0) rotate(0deg); }
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--bg-start); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 6px; border: 2px solid var(--bg-start); }
+::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
+
+/* FLUSH OVERLAY */
+#flush-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 99999;
+  pointer-events: none;
+  display: none;
+}
+#flush-overlay.active {
+  display: block;
+  pointer-events: all;
+  animation: flushVortex 2s ease-in forwards;
+  background: radial-gradient(circle, #1a0f00 0%, #0d0800 50%, #000 100%);
 }
 
-@keyframes gradientShift {
-0% { background-position: 0% 50%; }
-50% { background-position: 100% 50%; }
-100% { background-position: 0% 50%; }
+/* SHIT LEVEL BAR */
+#shit-level-bar {
+  position: fixed;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 300px;
+  background: rgba(0,0,0,0.7);
+  border: 2px solid var(--primary);
+  border-radius: 20px;
+  z-index: 1000;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+#shit-level-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to top, #8B4513, #39FF14);
+  border-radius: 0 0 18px 18px;
+  transition: height 0.3s ease;
+}
+#shit-level-text {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Bungee', cursive;
+  font-size: 10px;
+  color: var(--secondary);
+  white-space: nowrap;
+  text-shadow: 0 0 10px var(--secondary);
+}
+#shit-level-percent {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Bungee', cursive;
+  font-size: 12px;
+  color: var(--secondary);
+  text-shadow: 0 0 10px var(--secondary);
 }
 
-@keyframes particleFade {
-0% { opacity: 1; transform: scale(1); }
-100% { opacity: 0; transform: scale(0); }
-}
-
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-
-body {
-background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-color: #ffffff;
-font-family: 'Inter', sans-serif;
-overflow-x: hidden;
-min-height: 100vh;
-}
-
-#particleCanvas {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-pointer-events: none;
-z-index: 9999;
+/* FALLING SHIT CONTAINER */
+#falling-shits {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  overflow: hidden;
 }
 
 /* NAVBAR */
-nav {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-z-index: 1000;
-backdrop-filter: blur(20px);
-background: rgba(5, 0, 26, 0.7);
-border-bottom: 1px solid rgba(123, 47, 255, 0.3);
-padding: 15px 0;
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 10000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  background: rgba(13, 8, 0, 0.8);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(139, 69, 19, 0.3);
 }
-
-.nav-container {
-max-width: 1200px;
-margin: 0 auto;
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 0 20px;
-}
-
 .nav-logo {
-font-family: 'Orbitron', monospace;
-font-size: 1.5rem;
-font-weight: 900;
-background: linear-gradient(90deg, var(--primary), var(--secondary));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+  font-family: 'Bungee', cursive;
+  font-size: 1.4rem;
+  color: var(--primary);
+  text-decoration: none;
+  animation: neonFlicker 3s infinite;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-
+.nav-logo .emoji {
+  font-size: 1.6rem;
+  animation: float 2s infinite, rainbowShit 5s linear infinite;
+}
 .nav-links {
-display: flex;
-gap: 25px;
-align-items: center;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  list-style: none;
 }
-
 .nav-links a {
-color: rgba(255,255,255,0.8);
-text-decoration: none;
-font-size: 0.9rem;
-transition: color 0.3s;
+  color: #e0d5c0;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+  position: relative;
 }
-
 .nav-links a:hover {
-color: var(--secondary);
+  color: var(--secondary);
+  text-shadow: 0 0 15px var(--secondary);
+}
+.nav-buy-btn {
+  background: linear-gradient(135deg, var(--primary), #a0522d);
+  color: #fff !important;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-family: 'Bungee', cursive;
+  font-size: 0.8rem;
+  animation: btnPulse 2s infinite;
+  text-transform: uppercase;
+}
+.nav-buy-btn:hover {
+  background: linear-gradient(135deg, var(--secondary), #00cc00) !important;
+  color: #000 !important;
 }
 
-.btn-buy {
-background: linear-gradient(135deg, var(--primary), #a855f7);
-color: white;
-border: none;
-padding: 10px 25px;
-border-radius: 30px;
-font-family: 'Orbitron', monospace;
-font-weight: 700;
-cursor: pointer;
-animation: btnPulse 2s infinite;
-transition: transform 0.3s;
-font-size: 0.9rem;
-text-decoration: none;
+/* MARQUEE */
+.marquee-bar {
+  position: fixed;
+  top: 60px;
+  left: 0; right: 0;
+  z-index: 9999;
+  background: var(--primary);
+  padding: 4px 0;
+  overflow: hidden;
+  white-space: nowrap;
 }
-
-.btn-buy:hover {
-transform: scale(1.1);
+.marquee-text {
+  display: inline-block;
+  animation: marqueeScroll 15s linear infinite;
+  font-family: 'Bungee', cursive;
+  font-size: 0.75rem;
+  color: #000;
+  letter-spacing: 2px;
 }
 
 /* HERO */
 .hero {
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-padding: 120px 20px 60px;
-position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 20px 60px;
+  position: relative;
 }
-
 .hero::before {
-content: '';
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 600px;
-height: 600px;
-background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
-opacity: 0.15;
-border-radius: 50%;
-pointer-events: none;
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(57, 255, 20, 0.05) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
-
 .mascot {
-width: 250px;
-height: 250px;
-border-radius: 50%;
-animation: float 3s ease-in-out infinite;
-margin-bottom: 30px;
-border: 3px solid var(--primary);
-box-shadow: 0 0 40px var(--glow), 0 0 80px rgba(123, 47, 255, 0.3);
-object-fit: cover;
+  font-size: 8rem;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px var(--primary)) drop-shadow(0 0 60px rgba(139,69,19,0.5));
+  cursor: pointer;
+  transition: transform 0.1s;
+  user-select: none;
 }
-
+.mascot:hover {
+  animation: float 3s ease-in-out infinite, chaoticShake 0.5s infinite;
+}
+.mascot:active {
+  transform: scale(0.9);
+}
 .hero h1 {
-font-family: 'Orbitron', monospace;
-font-size: clamp(2.5rem, 8vw, 5rem);
-font-weight: 900;
-background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
-background-size: 200% auto;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-animation: textGlow 3s ease-in-out infinite, gradientShift 4s ease infinite;
-margin-bottom: 15px;
+  font-family: 'Bungee', cursive;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--primary));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textGlow 3s ease-in-out infinite;
+  margin: 15px 0;
+  letter-spacing: 3px;
+  line-height: 1.1;
 }
-
-.hero-slogan {
-font-size: 1.4rem;
-color: var(--secondary);
-font-family: 'Orbitron', monospace;
-min-height: 2em;
-border-right: 3px solid var(--secondary);
-display: inline-block;
-animation: typewriterCursor 0.8s infinite;
-padding-right: 5px;
+.hero .ticker-badge {
+  display: inline-block;
+  background: rgba(139, 69, 19, 0.3);
+  border: 2px solid var(--primary);
+  padding: 5px 20px;
+  border-radius: 30px;
+  font-family: 'Bungee', cursive;
+  font-size: 1rem;
+  color: var(--secondary);
+  margin-bottom: 10px;
+  animation: glitchFlicker 4s infinite;
 }
-
+.typewriter-container {
+  height: 35px;
+  margin: 15px 0 25px;
+}
+.typewriter {
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  color: var(--secondary);
+  font-weight: 700;
+  border-right: 3px solid var(--secondary);
+  padding-right: 5px;
+  animation: blink 0.7s step-end infinite;
+  display: inline;
+}
 .hero-buttons {
-display: flex;
-gap: 15px;
-margin-top: 35px;
-flex-wrap: wrap;
-justify-content: center;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
 }
-
 .btn-primary {
-background: linear-gradient(135deg, var(--primary), #a855f7);
-color: white;
-border: none;
-padding: 15px 35px;
-border-radius: 30px;
-font-family: 'Orbitron', monospace;
-font-weight: 700;
-font-size: 1rem;
-cursor: pointer;
-animation: btnPulse 2s infinite;
-transition: transform 0.3s;
-text-decoration: none;
-display: inline-block;
+  background: linear-gradient(135deg, var(--primary), #a0522d);
+  color: #fff;
+  font-family: 'Bungee', cursive;
+  font-size: 1rem;
+  padding: 14px 35px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  animation: btnPulse 2s infinite;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  letter-spacing: 1px;
 }
-
-.btn-primary:hover { transform: scale(1.08); }
-
+.btn-primary:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, var(--secondary), #00cc00);
+  color: #000;
+}
 .btn-secondary {
-background: transparent;
-color: var(--secondary);
-border: 2px solid var(--secondary);
-padding: 15px 35px;
-border-radius: 30px;
-font-family: 'Orbitron', monospace;
-font-weight: 700;
-font-size: 1rem;
-cursor: pointer;
-transition: all 0.3s;
-text-decoration: none;
-display: inline-block;
+  background: transparent;
+  color: var(--secondary);
+  font-family: 'Bungee', cursive;
+  font-size: 0.9rem;
+  padding: 14px 30px;
+  border: 2px solid var(--secondary);
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
 }
-
 .btn-secondary:hover {
-background: rgba(0, 255, 204, 0.1);
-transform: scale(1.08);
+  background: var(--secondary);
+  color: #000;
+  box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
 }
-
 .btn-outline {
-background: transparent;
-color: white;
-border: 2px solid rgba(123, 47, 255, 0.5);
-padding: 15px 35px;
-border-radius: 30px;
-font-family: 'Orbitron', monospace;
-font-weight: 700;
-font-size: 1rem;
-cursor: pointer;
-transition: all 0.3s;
+  background: transparent;
+  color: var(--primary);
+  font-family: 'Bungee', cursive;
+  font-size: 0.9rem;
+  padding: 14px 30px;
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
 }
-
 .btn-outline:hover {
-border-color: var(--primary);
-background: rgba(123, 47, 255, 0.1);
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 0 30px var(--glow);
 }
-
 .ca-container {
-margin-top: 25px;
-background: rgba(123, 47, 255, 0.1);
-border: 1px solid rgba(123, 47, 255, 0.3);
-border-radius: 15px;
-padding: 12px 20px;
-display: flex;
-align-items: center;
-gap: 10px;
-cursor: pointer;
-transition: all 0.3s;
-max-width: 500px;
+  margin-top: 20px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(139, 69, 19, 0.4);
+  border-radius: 12px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  max-width: 500px;
+  backdrop-filter: blur(5px);
 }
-
 .ca-container:hover {
-background: rgba(123, 47, 255, 0.2);
-border-color: var(--primary);
+  border-color: var(--secondary);
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
 }
-
 .ca-label {
-font-family: 'Orbitron', monospace;
-font-size: 0.75rem;
-color: var(--secondary);
+  font-family: 'Bungee', cursive;
+  font-size: 0.7rem;
+  color: var(--primary);
 }
-
 .ca-address {
-font-size: 0.8rem;
-color: rgba(255,255,255,0.7);
-word-break: break-all;
+  font-size: 0.75rem;
+  color: #aaa;
+  word-break: break-all;
+}
+.ca-copy {
+  color: var(--secondary);
+  font-size: 0.7rem;
+  white-space: nowrap;
 }
 
-.ca-copy-icon {
-font-size: 1.2rem;
-}
-
-.copy-feedback {
-color: var(--secondary);
-font-size: 0.8rem;
-margin-top: 5px;
-min-height: 1.2em;
-}
-
-/* SECTION STYLES */
+/* SECTION COMMON */
 section {
-padding: 80px 20px;
-max-width: 1200px;
-margin: 0 auto;
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
 }
-
 .section-title {
-font-family: 'Orbitron', monospace;
-font-size: clamp(1.8rem, 4vw, 2.5rem);
-text-align: center;
-margin-bottom: 50px;
-background: linear-gradient(90deg, var(--primary), var(--secondary));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+  font-family: 'Bungee', cursive;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--primary);
+  animation: textGlow 3s ease-in-out infinite;
+}
+.section-subtitle {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 50px;
+}
+.section-emoji {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 15px;
+  animation: float 3s ease-in-out infinite;
 }
 
 /* STATS */
 .stats-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
 }
-
 .stat-card {
-background: rgba(123, 47, 255, 0.08);
-backdrop-filter: blur(15px);
-border: 1px solid rgba(123, 47, 255, 0.25);
-border-radius: 20px;
-padding: 35px 25px;
-text-align: center;
-transition: all 0.4s;
+  background: rgba(139, 69, 19, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 69, 19, 0.25);
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: all 0.4s;
 }
-
 .stat-card:hover {
-transform: translateY(-5px);
-border-color: var(--secondary);
-box-shadow: 0 10px 40px rgba(0, 255, 204, 0.15);
+  transform: translateY(-5px);
+  border-color: var(--secondary);
+  box-shadow: 0 10px 40px rgba(57, 255, 20, 0.15);
 }
-
 .stat-number {
-font-family: 'Orbitron', monospace;
-font-size: 2.5rem;
-font-weight: 900;
-color: var(--secondary);
-margin-bottom: 8px;
+  font-family: 'Bungee', cursive;
+  font-size: 2.2rem;
+  color: var(--secondary);
+  text-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
 }
-
 .stat-label {
-color: rgba(255,255,255,0.7);
-font-size: 0.95rem;
+  font-size: 0.85rem;
+  color: #999;
+  margin-top: 8px;
 }
 
 /* ABOUT */
 .about-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
 }
-
 .about-card {
-background: rgba(123, 47, 255, 0.08);
-backdrop-filter: blur(15px);
-border: 1px solid rgba(123, 47, 255, 0.25);
-border-radius: 20px;
-padding: 35px 25px;
-text-align: center;
-transition: all 0.4s;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 20px;
+  padding: 35px 25px;
+  text-align: center;
+  transition: all 0.4s;
+  animation: glitchFlicker 8s infinite;
+  position: relative;
+  overflow: hidden;
 }
-
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(139,69,19,0.1), transparent);
+  transition: left 0.6s;
+}
+.about-card:hover::before {
+  left: 100%;
+}
 .about-card:hover {
-transform: translateY(-8px);
-border-color: var(--secondary);
-box-shadow: 0 15px 50px rgba(0, 255, 204, 0.12);
+  transform: translateY(-8px) rotate(-1deg);
+  border-color: var(--secondary);
+  box-shadow: 0 15px 50px rgba(57, 255, 20, 0.2);
+  animation: none;
 }
-
 .about-icon {
-font-size: 3.5rem;
-margin-bottom: 15px;
-display: block;
-animation: bouncy 2s ease-in-out infinite;
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  display: block;
+  animation: float 3s ease-in-out infinite;
 }
-
-.about-card:nth-child(2) .about-icon { animation-delay: 0.3s; }
-.about-card:nth-child(3) .about-icon { animation-delay: 0.6s; }
-
 .about-card h3 {
-font-family: 'Orbitron', monospace;
-font-size: 1.2rem;
-color: var(--secondary);
-margin-bottom: 12px;
+  font-family: 'Bungee', cursive;
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 12px;
 }
-
 .about-card p {
-color: rgba(255,255,255,0.7);
-line-height: 1.6;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #bbb;
 }
 
 /* TOKENOMICS */
-.tokenomics-container {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 60px;
-flex-wrap: wrap;
+.tokenomics-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
 }
-
-.token-chart {
-width: 280px;
-height: 280px;
-border-radius: 50%;
-background: conic-gradient(
-var(--primary) 0deg 144deg,
-var(--secondary) 144deg 234deg,
-#ff6b6b 234deg 288deg,
-#ffd93d 288deg 324deg,
-#a855f7 324deg 360deg
-);
-position: relative;
-box-shadow: 0 0 40px var(--glow);
-animation: spin 20s linear infinite;
-flex-shrink: 0;
+.pie-chart {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--primary) 0deg 144deg,
+    var(--secondary) 144deg 252deg,
+    #654321 252deg 324deg,
+    #a0522d 324deg 360deg
+  );
+  position: relative;
+  box-shadow: 0 0 40px var(--glow), inset 0 0 40px rgba(0,0,0,0.5);
+  animation: spin 30s linear infinite;
 }
-
-.token-chart::after {
-content: '$TOKEN';
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 140px;
-height: 140px;
-background: var(--bg-start);
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: 'Orbitron', monospace;
-font-weight: 900;
-font-size: 0.9rem;
-color: var(--secondary);
-animation: spin 20s linear infinite reverse;
+.pie-chart::after {
+  content: '💩';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px; height: 90px;
+  background: var(--bg-start);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  animation: spin 30s linear infinite reverse;
 }
-
-.token-list {
-list-style: none;
+.tokenomics-list {
+  list-style: none;
 }
-
-.token-list li {
-padding: 12px 0;
-font-size: 1.05rem;
-display: flex;
-align-items: center;
-gap: 12px;
-color: rgba(255,255,255,0.85);
+.tokenomics-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-size: 0.95rem;
 }
-
 .token-dot {
-width: 14px;
-height: 14px;
-border-radius: 50%;
-display: inline-block;
-flex-shrink: 0;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.token-label {
+  color: #ccc;
+}
+.token-percent {
+  font-family: 'Bungee', cursive;
+  color: var(--secondary);
+  margin-left: auto;
 }
 
 /* ROADMAP */
 .roadmap-timeline {
-position: relative;
-max-width: 700px;
-margin: 0 auto;
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
 }
-
 .roadmap-timeline::before {
-content: '';
-position: absolute;
-left: 30px;
-top: 0;
-bottom: 0;
-width: 3px;
-background: linear-gradient(to bottom, var(--primary), var(--secondary));
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary), var(--primary));
+  border-radius: 2px;
 }
-
 .roadmap-item {
-position: relative;
-padding-left: 75px;
-margin-bottom: 45px;
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 45px;
 }
-
 .roadmap-dot {
-position: absolute;
-left: 20px;
-top: 5px;
-width: 24px;
-height: 24px;
-border-radius: 50%;
-border: 3px solid var(--primary);
-background: var(--bg-start);
-z-index: 2;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  background: var(--bg-start);
+  z-index: 2;
 }
-
-.roadmap-item.done .roadmap-dot {
-background: var(--secondary);
-border-color: var(--secondary);
-box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+.roadmap-item[data-status="done"] .roadmap-dot {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  box-shadow: 0 0 15px var(--secondary);
 }
-
-.roadmap-item.active .roadmap-dot {
-background: var(--primary);
-border-color: var(--secondary);
-box-shadow: 0 0 20px var(--glow);
-animation: btnPulse 2s infinite;
+.roadmap-item[data-status="active"] .roadmap-dot {
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 15px var(--primary);
+  animation: btnPulse 2s infinite;
 }
-
-.roadmap-item.active .roadmap-dot::after {
-content: '';
-position: absolute;
-top: -6px;
-left: -6px;
-right: -6px;
-bottom: -6px;
-border-radius: 50%;
-border: 2px solid var(--secondary);
-animation: pulseRing 1.5s infinite;
-}
-
-.roadmap-content {
-background: rgba(123, 47, 255, 0.08);
-border: 1px solid rgba(123, 47, 255, 0.25);
-border-radius: 15px;
-padding: 25px;
-transition: all 0.3s;
-}
-
-.roadmap-item.done .roadmap-content {
-border-color: rgba(0, 255, 204, 0.3);
-}
-
-.roadmap-item.active .roadmap-content {
-border-color: var(--primary);
-box-shadow: 0 0 30px rgba(123, 47, 255, 0.15);
-}
-
-.roadmap-content:hover {
-transform: translateX(5px);
-}
-
 .roadmap-phase {
-font-family: 'Orbitron', monospace;
-font-size: 0.8rem;
-color: var(--secondary);
-margin-bottom: 5px;
+  font-family: 'Bungee', cursive;
+  font-size: 0.75rem;
+  color: var(--secondary);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
 }
-
-.roadmap-title {
-font-family: 'Orbitron', monospace;
-font-size: 1.2rem;
-margin-bottom: 12px;
+.roadmap-item-title {
+  font-family: 'Bungee', cursive;
+  font-size: 1.15rem;
+  color: var(--primary);
+  margin-bottom: 10px;
 }
-
-.roadmap-items {
-list-style: none;
+.roadmap-item[data-status="done"] .roadmap-item-title {
+  color: var(--secondary);
 }
-
-.roadmap-items li {
-color: rgba(255,255,255,0.7);
-padding: 4px 0;
-font-size: 0.95rem;
+.roadmap-list {
+  list-style: none;
 }
-
-.roadmap-items li::before {
-content: '→ ';
-color: var(--secondary);
+.roadmap-list li {
+  font-size: 0.85rem;
+  color: #aaa;
+  padding: 4px 0;
+  padding-left: 18px;
+  position: relative;
 }
-
-.roadmap-item.done .roadmap-items li::before {
-content: '✓ ';
+.roadmap-list li::before {
+  content: '💩';
+  position: absolute;
+  left: 0;
+  font-size: 0.7rem;
 }
-
+.roadmap-item[data-status="done"] .roadmap-list li::before {
+  content: '✅';
+}
 .roadmap-status {
-display: inline-block;
-font-family: 'Orbitron', monospace;
-font-size: 0.7rem;
-padding: 3px 10px;
-border-radius: 10px;
-margin-top: 10px;
+  display: inline-block;
+  font-size: 0.65rem;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-family: 'Bungee', cursive;
+  margin-left: 10px;
 }
-
-.status-done {
-background: rgba(0, 255, 204, 0.15);
-color: var(--secondary);
-border: 1px solid rgba(0, 255, 204, 0.3);
-}
-
-.status-active {
-background: rgba(123, 47, 255, 0.2);
-color: #a855f7;
-border: 1px solid rgba(123, 47, 255, 0.4);
-animation: btnPulse 2s infinite;
-}
-
-.status-upcoming {
-background: rgba(255,255,255,0.05);
-color: rgba(255,255,255,0.5);
-border: 1px solid rgba(255,255,255,0.1);
-}
+.status-done { background: rgba(57,255,20,0.2); color: var(--secondary); }
+.status-active { background: rgba(139,69,19,0.3); color: var(--primary); animation: btnPulse 2s infinite; }
+.status-upcoming { background: rgba(255,255,255,0.1); color: #666; }
 
 /* HOW TO BUY */
-.steps-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-gap: 25px;
+.htb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+.htb-step {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(139, 69, 19, 0.25);
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: all 0.4s;
+  position: relative;
+}
+.htb-step:hover {
+  transform: translateY(-5px);
+  border-color: var(--secondary);
+  box-shadow: 0 10px 40px rgba(57, 255, 20, 0.15);
+}
+.htb-number {
+  font-family: 'Bungee', cursive;
+  font-size: 2rem;
+  color: var(--primary);
+  opacity: 0.5;
+  position: absolute;
+  top: 10px; right: 18px;
+}
+.htb-step-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  display: block;
+}
+.htb-step h3 {
+  font-family: 'Bungee', cursive;
+  font-size: 0.95rem;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.htb-step p {
+  font-size: 0.8rem;
+  color: #aaa;
+  line-height: 1.5;
 }
 
-.step-card {
-background: rgba(123, 47, 255, 0.08);
-border: 1px solid rgba(123, 47, 255, 0.25);
-border-radius: 20px;
-padding: 30px 20px;
-text-align: center;
-transition: all 0.4s;
-position: relative;
-}
-
-.step-card:hover {
-transform: translateY(-5px);
-border-color: var(--secondary);
-}
-
-.step-number {
-font-family: 'Orbitron', monospace;
-font-size: 3rem;
-font-weight: 900;
-color: var(--primary);
-opacity: 0.3;
-position: absolute;
-top: 10px;
-right: 20px;
-}
-
-.step-icon {
-font-size: 2.5rem;
-margin-bottom: 15px;
-display: block;
-}
-
-.step-card h3 {
-font-family: 'Orbitron', monospace;
-font-size: 1rem;
-color: var(--secondary);
-margin-bottom: 10px;
-}
-
-.step-card p {
-color: rgba(255,255,255,0.7);
-font-size: 0.9rem;
-line-height: 1.5;
-}
-
-/* GAME */
+/* CLICKER GAME */
 .game-section {
-text-align: center;
+  text-align: center;
 }
-
-.game-container {
-background: rgba(123, 47, 255, 0.08);
-border: 1px solid rgba(123, 47, 255, 0.25);
-border-radius: 25px;
-padding: 40px 30px;
-max-width: 500px;
-margin: 0 auto;
+.game-area {
+  background: rgba(0,0,0,0.5);
+  border: 2px solid var(--primary);
+  border-radius: 30px;
+  padding: 40px;
+  max-width: 450px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
-
+.game-area::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(139,69,19,0.1), transparent, rgba(57,255,20,0.05), transparent);
+  animation: spin 10s linear infinite;
+  z-index: 0;
+}
+.game-mascot {
+  font-size: 6rem;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.1s;
+  animation: float 3s ease-in-out infinite;
+  display: inline-block;
+}
+.game-mascot:active {
+  transform: scale(0.85);
+  animation: none;
+}
 .game-score {
-font-family: 'Orbitron', monospace;
-font-size: 3rem;
-font-weight: 900;
-color: var(--secondary);
-margin-bottom: 5px;
+  font-family: 'Bungee', cursive;
+  font-size: 2rem;
+  color: var(--secondary);
+  margin: 15px 0 5px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 20px rgba(57,255,20,0.4);
 }
-
 .game-level {
-font-family: 'Orbitron', monospace;
-font-size: 1rem;
-color: var(--primary);
-margin-bottom: 20px;
+  font-size: 0.85rem;
+  color: var(--primary);
+  position: relative;
+  z-index: 1;
+  font-family: 'Bungee', cursive;
 }
-
-.game-mascot-btn {
-width: 180px;
-height: 180px;
-border-radius: 50%;
-border: 3px solid var(--primary);
-cursor: pointer;
-transition: transform 0.1s;
-background: none;
-padding: 0;
-box-shadow: 0 0 30px var(--glow);
-overflow: hidden;
-position: relative;
-display: inline-block;
+.game-plus {
+  position: absolute;
+  font-family: 'Bungee', cursive;
+  color: var(--secondary);
+  font-size: 1.5rem;
+  pointer-events: none;
+  z-index: 10;
+  animation: floatUp 1s ease-out forwards;
 }
-
-.game-mascot-btn:active {
-transform: scale(0.92);
-}
-
-.game-mascot-btn img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-border-radius: 50%;
-}
-
-.game-instruction {
-color: rgba(255,255,255,0.5);
-margin-top: 15px;
-font-size: 0.9rem;
-}
-
-.game-multiplier {
-font-family: 'Orbitron', monospace;
-color: var(--secondary);
-font-size: 0.85rem;
-margin-top: 8px;
-}
-
-.float-text {
-position: absolute;
-pointer-events: none;
-font-family: 'Orbitron', monospace;
-font-weight: 900;
-font-size: 1.5rem;
-color: var(--secondary);
-animation: floatUp 1s ease-out forwards;
-z-index: 100;
-}
-
 @keyframes floatUp {
-0% { opacity: 1; transform: translateY(0) scale(1); }
-100% { opacity: 0; transform: translateY(-80px) scale(1.5); }
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-80px) scale(1.5); }
+}
+.level-bar-container {
+  width: 100%;
+  height: 12px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 6px;
+  margin-top: 15px;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(139,69,19,0.3);
+}
+.level-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 6px;
+  transition: width 0.3s;
+  box-shadow: 0 0 10px var(--secondary);
 }
 
 /* COMMUNITY */
 .community-grid {
-display: flex;
-justify-content: center;
-gap: 25px;
-flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
 }
-
 .community-card {
-background: rgba(123, 47, 255, 0.08);
-border: 1px solid rgba(123, 47, 255, 0.25);
-border-radius: 20px;
-padding: 30px 40px;
-text-align: center;
-transition: all 0.4s;
-text-decoration: none;
-color: white;
-min-width: 200px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 20px;
+  padding: 35px 25px;
+  text-align: center;
+  transition: all 0.4s;
 }
-
 .community-card:hover {
-transform: translateY(-8px);
-border-color: var(--secondary);
-box-shadow: 0 15px 50px rgba(0, 255, 204, 0.12);
+  transform: translateY(-8px);
+  border-color: var(--secondary);
+  box-shadow: 0 10px 40px rgba(57, 255, 20, 0.2);
 }
-
 .community-icon {
-font-size: 3rem;
-margin-bottom: 15px;
-display: block;
+  font-size: 3rem;
+  margin-bottom: 12px;
+  display: block;
 }
-
 .community-card h3 {
-font-family: 'Orbitron', monospace;
-font-size: 1rem;
-color: var(--secondary);
-margin-bottom: 5px;
+  font-family: 'Bungee', cursive;
+  font-size: 1rem;
+  color: var(--primary);
+  margin-bottom: 8px;
 }
-
 .community-card p {
-color: rgba(255,255,255,0.6);
-font-size: 0.85rem;
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 15px;
+}
+.community-link {
+  display: inline-block;
+  color: var(--secondary);
+  text-decoration: none;
+  font-family: 'Bungee', cursive;
+  font-size: 0.8rem;
+  border: 1px solid var(--secondary);
+  padding: 8px 22px;
+  border-radius: 25px;
+  transition: all 0.3s;
+}
+.community-link:hover {
+  background: var(--secondary);
+  color: #000;
+  box-shadow: 0 0 20px rgba(57,255,20,0.4);
 }
 
 /* FOOTER */
 footer {
-border-top: 1px solid rgba(123, 47, 255, 0.2);
-padding: 40px 20px;
-text-align: center;
-max-width: 1200px;
-margin: 0 auto;
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid rgba(139, 69, 19, 0.2);
+  margin-top: 20px;
 }
-
-.footer-logo {
-font-family: 'Orbitron', monospace;
-font-size: 1.5rem;
-font-weight: 900;
-background: linear-gradient(90deg, var(--primary), var(--secondary));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-margin-bottom: 15px;
+.footer-mascot {
+  font-size: 3rem;
+  animation: float 3s ease-in-out infinite;
+  display: block;
+  margin-bottom: 10px;
 }
-
+.footer-name {
+  font-family: 'Bungee', cursive;
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
 .footer-disclaimer {
-color: rgba(255,255,255,0.4);
-font-size: 0.8rem;
-line-height: 1.6;
-max-width: 600px;
-margin: 0 auto;
+  font-size: 0.7rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+.footer-disclaimer strong {
+  color: var(--primary);
 }
 
-/* Explosion particles */
-.explosion-particle {
-position: fixed;
-pointer-events: none;
-border-radius: 50%;
-z-index: 9998;
-animation: particleFade 0.8s ease-out forwards;
+/* CANVAS BG */
+#particleCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--bg-start); }
-::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+/* Content wrapper */
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+}
 
-/* Mobile */
+/* UNDER CONSTRUCTION banner */
+.uc-banner {
+  background: repeating-linear-gradient(
+    45deg,
+    #000,
+    #000 10px,
+    #8B4513 10px,
+    #8B4513 20px
+  );
+  padding: 8px;
+  text-align: center;
+  font-family: 'Bungee', cursive;
+  font-size: 0.7rem;
+  color: var(--secondary);
+  letter-spacing: 3px;
+  animation: glitchFlicker 3s infinite;
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
-.nav-links a:not(.btn-buy) { display: none; }
-.hero h1 { font-size: 2.5rem; }
-.mascot { width: 180px; height: 180px; }
-.tokenomics-container { flex-direction: column; }
-.token-chart { width: 220px; height: 220px; }
-.token-chart::after { width: 110px; height: 110px; font-size: 0.75rem; }
-.hero-buttons { flex-direction: column; align-items: center; }
-.roadmap-timeline::before { left: 20px; }
-.roadmap-item { padding-left: 55px; }
-.roadmap-dot { left: 10px; }
+  .navbar { padding: 10px 15px; }
+  .nav-links { gap: 12px; }
+  .nav-links a:not(.nav-buy-btn) { display: none; }
+  .mascot { font-size: 5rem; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .tokenomics-content { flex-direction: column; }
+  #shit-level-bar { width: 30px; height: 200px; right: 8px; }
+  .stat-card { padding: 20px 15px; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+  .htb-grid { grid-template-columns: 1fr 1fr; }
+  section { padding: 60px 15px; }
+  .game-mascot { font-size: 4rem; }
+}
+@media (max-width: 480px) {
+  .htb-grid { grid-template-columns: 1fr; }
+}
+
+/* Copied tooltip */
+.copy-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--secondary);
+  color: #000;
+  font-family: 'Bungee', cursive;
+  font-size: 0.85rem;
+  padding: 10px 30px;
+  border-radius: 30px;
+  z-index: 100000;
+  box-shadow: 0 0 30px rgba(57,255,20,0.5);
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Stacked shits at bottom */
+.stacked-shit {
+  position: fixed;
+  font-size: 2rem;
+  z-index: 49;
+  pointer-events: none;
+  transition: none;
 }
 </style>
 </head>
@@ -898,21 +997,493 @@ animation: particleFade 0.8s ease-out forwards;
 
 <canvas id="particleCanvas"></canvas>
 
+<div id="flush-overlay"></div>
+<div id="falling-shits"></div>
+
+<div id="shit-level-bar">
+  <span id="shit-level-text">SHIT LVL</span>
+  <div id="shit-level-fill" style="height: 0%"></div>
+  <span id="shit-level-percent">0%</span>
+</div>
+
+<div class="content-wrapper">
+
 <!-- NAVBAR -->
-<nav>
-<div class="nav-container">
-<div class="nav-logo">🚀 $TOKEN</div>
-<div class="nav-links">
-<a href="#about">About</a>
-<a href="#tokenomics">Tokenomics</a>
-<a href="#roadmap">Roadmap</a>
-<a href="#game">Game</a>
-<a href="#" class="btn-buy" onclick="triggerExplosion(event)">Buy Now</a>
-</div>
-</div>
+<nav class="navbar">
+  <a href="#" class="nav-logo"><span class="emoji">💩</span> $SHIT</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#tokenomics">Tokenomics</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#game">Game</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#" class="nav-buy-btn">Buy $SHIT</a></li>
+  </ul>
 </nav>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <span class="marquee-text">💩 $SHIT IS LIVE 💩 THE WORST SITE IN CRYPTO 💩 PURE DEGENERACY 💩 BUY NOW OR CRY LATER 💩 FLUSH YOUR FIAT 💩 EMBRACE THE SHIT 💩 NO PROMISES ONLY POOP 💩 $SHIT TO THE MOON (OR THE SEWER) 💩</span>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="hero">
-<img src="data:image/jpeg;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP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
+  <div class="ticker-badge">$SHIT TOKEN</div>
+  <div class="mascot" id="hero-mascot">💩</div>
+  <h1>ShitSite</h1>
+  <div class="typewriter-container">
+    <span class="typewriter" id="typewriter"></span>
+  </div>
+  <div class="hero-buttons">
+    <a href="#" class="btn-primary">🚽 Buy $SHIT</a>
+    <a href="#about" class="btn-secondary">📖 WTF is This</a>
+    <a href="#game" class="btn-outline">🎮 Play Game</a>
+  </div>
+  <div class="ca-container" id="ca-container" onclick="copyCA()">
+    <div>
+      <div class="ca-label">CONTRACT ADDRESS</div>
+      <div class="ca-address" id="ca-text">SH1Tp0oPd3g3NcAnA1i2eC0nTr4cTaDdR355sH1T</div>
+    </div>
+    <div class="ca-copy">📋 COPY</div>
+  </div>
+</section>
+
+<!-- UNDER CONSTRUCTION -->
+<div class="uc-banner">⚠️ UNDER CONSTRUCTION — MAKING IT WORSE ⚠️</div>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="section-emoji">📊</div>
+  <h2 class="section-title">Shit Stats</h2>
+  <p class="section-subtitle">Real numbers. Real shit. No cap.</p>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number" data-target="69420" data-prefix="">0</div>
+      <div class="stat-label">💩 Holders of Shit</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" data-target="1000000000" data-prefix="$">$0</div>
+      <div class="stat-label">🪠 Total Supply (Turds)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" data-target="100" data-suffix="%" data-prefix="">0</div>
+      <div class="stat-label">🧻 Community Owned</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-emoji">🤔</div>
+  <h2 class="section-title">WTF is $SHIT?</h2>
+  <p class="section-subtitle">The only honest token in crypto. We promise nothing and deliver even less.</p>
+  <div class="about-grid">
+    <div class="about-card">
+      <span class="about-icon">💩</span>
+      <h3>100% Organic Shit</h3>
+      <p>Никаких фейковых обещаний — только честное говно. Мы единственный токен, который не притворяется чем-то полезным.</p>
+    </div>
+    <div class="about-card">
+      <span class="about-icon">🪠</span>
+      <h3>Uncloggable Community</h3>
+      <p>Наше коммьюнити невозможно засрать, потому что мы УЖЕ на дне. Отсюда только вверх — или глубже в канализацию.</p>
+    </div>
+    <div class="about-card">
+      <span class="about-icon">🧻</span>
+      <h3>Toilet Paper Hands Proof</h3>
+      <p>Специальная токеномика для настоящих дегенов. Слабые руки смываются, алмазные держатели получают больше говна.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TOKENOMICS -->
+<section id="tokenomics">
+  <div class="section-emoji">🥧</div>
+  <h2 class="section-title">Shitonomics</h2>
+  <p class="section-subtitle">How the shit is distributed</p>
+  <div class="tokenomics-content">
+    <div class="pie-chart"></div>
+    <ul class="tokenomics-list">
+      <li>
+        <span class="token-dot" style="background: var(--primary)"></span>
+        <span class="token-label">Community & Airdrops</span>
+        <span class="token-percent">40%</span>
+      </li>
+      <li>
+        <span class="token-dot" style="background: var(--secondary)"></span>
+        <span class="token-label">Liquidity Pool</span>
+        <span class="token-percent">30%</span>
+      </li>
+      <li>
+        <span class="token-dot" style="background: #654321"></span>
+        <span class="token-label">Marketing (Shit-posting)</span>
+        <span class="token-percent">20%</span>
+      </li>
+      <li>
+        <span class="token-dot" style="background: #a0522d"></span>
+        <span class="token-label">Dev (Toilet Paper Fund)</span>
+        <span class="token-percent">10%</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="section-emoji">🗺️</div>
+  <h2 class="section-title">Shit Roadmap</h2>
+  <p class="section-subtitle">Where are we going? Nobody knows. But we have a plan.</p>
+  <div class="roadmap-timeline">
+    <div class="roadmap-item" data-status="done">
+      <div class="roadmap-dot"></div>
+      <div class="roadmap-phase">Phase 1 <span class="roadmap-status status-done">DONE ✅</span></div>
+      <div class="roadmap-item-title">The First Flush</div>
+      <ul class="roadmap-list">
+        <li>Запуск самого уродливого сайта в истории крипты</li>
+        <li>Деплой контракта на pump.fun</li>
+        <li>Первые 1000 держателей говна</li>
+      </ul>
+    </div>
+    <div class="roadmap-item" data-status="active">
+      <div class="roadmap-dot"></div>
+      <div class="roadmap-phase">Phase 2 <span class="roadmap-status status-active">ACTIVE 🔥</span></div>
+      <div class="roadmap-item-title">Sewage Expansion</div>
+      <ul class="roadmap-list">
+        <li>Листинг на DEX-скринеры</li>
+        <li>Мемоканал с говно-контентом 24/7</li>
+        <li>Коллаборации с худшими проектами</li>
+      </ul>
+    </div>
+    <div class="roadmap-item" data-status="upcoming">
+      <div class="roadmap-dot"></div>
+      <div class="roadmap-phase">Phase 3 <span class="roadmap-status status-upcoming">SOON 🚀</span></div>
+      <div class="roadmap-item-title">Golden Turd</div>
+      <ul class="roadmap-list">
+        <li>NFT-коллекция «Rare Shits»</li>
+        <li>Говно-DAO для голосований</li>
+        <li>Сайт v2 — ещё уродливее</li>
+      </ul>
+    </div>
+    <div class="roadmap-item" data-status="upcoming">
+      <div class="roadmap-dot"></div>
+      <div class="roadmap-phase">Phase 4 <span class="roadmap-status status-upcoming">DREAM 💭</span></div>
+      <div class="roadmap-item-title">Shit Hits The Fan</div>
+      <ul class="roadmap-list">
+        <li>CEX-листинги на мусорных биржах</li>
+        <li>Мерч: туалетная бумага с логотипом</li>
+        <li>Мировое доминирование через канализацию</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO BUY -->
+<section id="howtobuy">
+  <div class="section-emoji">🛒</div>
+  <h2 class="section-title">How To Buy $SHIT</h2>
+  <p class="section-subtitle">4 easy steps to flush your money</p>
+  <div class="htb-grid">
+    <div class="htb-step">
+      <span class="htb-number">01</span>
+      <span class="htb-step-icon">👛</span>
+      <h3>Get a Wallet</h3>
+      <p>Download Phantom or Solflare. If you can't do this, maybe crypto isn't for you. Or maybe $SHIT IS for you.</p>
+    </div>
+    <div class="htb-step">
+      <span class="htb-number">02</span>
+      <span class="htb-step-icon">💰</span>
+      <h3>Get Some SOL</h3>
+      <p>Buy SOL on any exchange. This is the last smart decision you'll make today.</p>
+    </div>
+    <div class="htb-step">
+      <span class="htb-number">03</span>
+      <span class="htb-step-icon">🔗</span>
+      <h3>Go to pump.fun</h3>
+      <p>Navigate to pump.fun and find $SHIT. It won't be hard — we're the worst one there.</p>
+    </div>
+    <div class="htb-step">
+      <span class="htb-number">04</span>
+      <span class="htb-step-icon">🚽</span>
+      <h3>Flush & Hold</h3>
+      <p>Swap SOL for $SHIT and hold forever. Diamond hands only. Toilet paper hands get flushed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GAME -->
+<section id="game" class="game-section">
+  <div class="section-emoji">🎮</div>
+  <h2 class="section-title">Shit Clicker</h2>
+  <p class="section-subtitle">Click the shit. Earn virtual nothing. Feel something.</p>
+  <div class="game-area" id="game-area">
+    <div class="game-mascot" id="game-mascot" onclick="handleGameClick(event)">💩</div>
+    <div class="game-score">$SHIT: <span id="game-score">0</span></div>
+    <div class="game-level">Level: <span id="game-level">1</span> — <span id="game-title">Fresh Turd</span></div>
+    <div class="level-bar-container">
+      <div class="level-bar-fill" id="level-bar" style="width: 0%"></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community">
+  <div class="section-emoji">🤝</div>
+  <h2 class="section-title">Join The Sewer</h2>
+  <p class="section-subtitle">Connect with fellow degenerates in the sewage system</p>
+  <div class="community-grid">
+    <div class="community-card">
+      <span class="community-icon">🐦</span>
+      <h3>Twitter / X</h3>
+      <p>Follow us for the freshest shit-posts and degen alpha</p>
+      <a href="#" class="community-link" target="_blank">@ShitSiteToken</a>
+    </div>
+    <div class="community-card">
+      <span class="community-icon">✈️</span>
+      <h3>Telegram</h3>
+      <p>Join 69,420 degens in the official $SHIT sewer chat</p>
+      <a href="#" class="community-link" target="_blank">Join Chat</a>
+    </div>
+    <div class="community-card">
+      <span class="community-icon">💊</span>
+      <h3>Pump.fun</h3>
+      <p>The birthplace of $SHIT. Where it all began. Where it never ends.</p>
+      <a href="#" class="community-link" target="_blank">Buy on Pump</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-mascot">💩</span>
+  <div class="footer-name">$SHIT — ShitSite</div>
+  <p class="footer-disclaimer">
+    <strong>DISCLAIMER:</strong> $SHIT is a meme token with absolutely no intrinsic value, utility, or expectation of financial return. This is not financial advice — it's a cry for help. We are not responsible for any financial losses, toilet overflows, or existential crises caused by buying this token. DYOR. NFA. WAGMI (maybe). Built on Solana. Flushed with love. 💩
+  </p>
+</footer>
+
+</div><!-- /content-wrapper -->
+
+<script>
+// ======== PARTICLE CANVAS ========
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.8;
+    this.speedY = (Math.random() - 0.5) * 0.8;
+    this.opacity = Math.random() * 0.5 + 0.1;
+    this.color = Math.random() > 0.5 ? '139, 69, 19' : '57, 255, 20';
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+      this.reset();
+    }
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
+    ctx.fill();
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = `rgba(${this.color}, ${this.opacity})`;
+  }
+}
+
+for (let i = 0; i < 80; i++) {
+  particles.push(new Particle());
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.shadowBlur = 0;
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+  ctx.shadowBlur = 0;
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ======== TYPEWRITER ========
+const slogans = [
+  "The Worst Site. The Best Token. Pure Degeneracy.",
+  "Flush your fiat. Embrace the shit.",
+  "No utility. No promises. Just vibes.",
+  "From the sewer to the moon.",
+  "100% organic, farm-fresh crypto shit."
+];
+let sloganIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typewriterEl = document.getElementById('typewriter');
+
+function typewrite() {
+  const current = slogans[sloganIndex];
+  if (!isDeleting) {
+    typewriterEl.textContent = current.substring(0, charIndex + 1);
+    charIndex++;
+    if (charIndex === current.length) {
+      isDeleting = true;
+      setTimeout(typewrite, 2000);
+      return;
+    }
+    setTimeout(typewrite, 60);
+  } else {
+    typewriterEl.textContent = current.substring(0, charIndex - 1);
+    charIndex--;
+    if (charIndex === 0) {
+      isDeleting = false;
+      sloganIndex = (sloganIndex + 1) % slogans.length;
+      setTimeout(typewrite, 400);
+      return;
+    }
+    setTimeout(typewrite, 30);
+  }
+}
+typewrite();
+
+// ======== COUNTERS ========
+function animateCounters() {
+  document.querySelectorAll('.stat-number').forEach(el => {
+    const target = parseInt(el.dataset.target);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    let current = 0;
+    const step = Math.ceil(target / 100);
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = prefix + current.toLocaleString() + suffix;
+    }, 25);
+  });
+}
+
+let countersStarted = false;
+const statsSection = document.getElementById('stats');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !countersStarted) {
+      countersStarted = true;
+      animateCounters();
+    }
+  });
+}, { threshold: 0.3 });
+observer.observe(statsSection);
+
+// ======== COPY CA ========
+function copyCA() {
+  const text = document.getElementById('ca-text').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('💩 Contract Address Copied!');
+  }).catch(() => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('💩 Contract Address Copied!');
+  });
+}
+
+function showToast(msg) {
+  const existing = document.querySelector('.copy-toast');
+  if (existing) existing.remove();
+  const toast = document.createElement('div');
+  toast.className = 'copy-toast';
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2000);
+}
+
+// ======== CLICKER GAME ========
+let gameScore = 0;
+let gameLevel = 1;
+const levelThresholds = [10, 30, 75, 150, 300, 500, 1000, 2000, 5000, 10000];
+const levelTitles = [
+  'Fresh Turd', 'Warm Pile', 'Stinky Stack', 'Dung Beetle',
+  'Sewer Rat', 'Poop Wizard', 'Shit Lord', 'Golden Turd',
+  'Diamond Dookie', 'SHIT GOD', 'Beyond Shit'
+];
+
+function handleGameClick(e) {
+  gameScore++;
+  document.getElementById('game-score').textContent = gameScore;
+
+  // +1 animation
+  const plus = document.createElement('div');
+  plus.className = 'game-plus';
+  plus.textContent = '+1 💩';
+  const rect = document.getElementById('game-area').getBoundingClientRect();
+  plus.style.left = (e.clientX - rect.left) + 'px';
+  plus.style.top = (e.clientY - rect.top) + 'px';
+  document.getElementById('game-area').appendChild(plus);
+  setTimeout(() => plus.remove(), 1000);
+
+  // Level check
+  let newLevel = 1;
+  for (let i = 0; i < levelThresholds.length; i++) {
+    if (gameScore >= levelThresholds[i]) newLevel = i + 2;
+  }
+  if (newLevel !== gameLevel) {
+    gameLevel = newLevel;
+    document.getElementById('game-level').textContent = gameLevel;
+    document.getElementById('game-title').textContent = levelTitles[Math.min(gameLevel - 1, levelTitles.length - 1)];
+  }
+
+  // Level bar
+  const currentThreshold = levelThresholds[gameLevel - 2] || 0;
+  const nextThreshold = levelThresholds[gameLevel - 1] || levelThresholds[levelThresholds.length - 1];
+  const progress = Math.min(((gameScore - currentThreshold) / (nextThreshold - currentThreshold)) * 100, 100);
+  document.getElementById('level-bar').style.width = progress + '%';
+}
+
+// ======== UNIQUE FEATURE: FALLING SHITS WITH PHYSICS ========
+let shitLevel = 0;
+const maxShits = 100;
+let stackedShits = [];
+const shitEmojis = ['💩', '💩', '💩', '🔥💩', '✨💩', '💩💩'];
+let isFlushing = false;
+
+document.addEventListener('click', function(e) {
+  // Don't trigger on specific interactive elements
+  if (e.target.closest('.navbar') || e.target.closest('#game-mascot') || e.target.closest('.ca-container')
+      || e.target.closest('button') || e.target.closest('a') || isFlushing) return;
+
+  spawnFallingShit(e.clientX);
+});
+
+function spawnFallingShit(x) {
+  const container = document.getElementById('falling-shits');
+  const shit = document.createElement('div');
+  shit.style.position = 'absolute';
+  shit.style.left = (x || Math.random() * window.innerWidth) + 'px';
+  shit.style.top = '-50px';
+  shit.style.fontSize = (Math.random() * 20 + 20) + 'px';
+  shit.style.zIndex = '51';
+  shit.style.pointerEvents = 'none';
+  shit.style.filter = `hue-rotate(${Math.random() * 30}deg)`;
+  shit.textContent = shit
 </body></html>
