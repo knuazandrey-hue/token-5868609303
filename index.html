@@ -1,849 +1,1014 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEOW TOKEN - The Purrfect Meme Coin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #00ff88;
-            --secondary: #ff00ff;
-            --accent: #00d4ff;
-            --dark: #0a0a0f;
-            --darker: #050508;
-        }
-
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 50%, #0a0a0f 100%);
-            color: white;
-            overflow-x: hidden;
-        }
-
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1rem 2rem;
-            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
-        }
-
-        nav ul {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-            text-shadow: 0 0 20px var(--primary);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 2rem;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 255, 136, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: pulse 4s infinite;
-            z-index: 0;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .logo-container {
-            margin-bottom: 2rem;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .logo-container img {
-            max-width: 400px;
-            filter: drop-shadow(0 0 40px rgba(0, 255, 136, 0.6));
-            transition: transform 0.3s;
-        }
-
-        .logo-container img:hover {
-            transform: scale(1.05) rotate(5deg);
-        }
-
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 6rem;
-            font-weight: 900;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary), var(--primary));
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientMove 3s ease infinite;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 80px rgba(0, 255, 136, 0.5);
-        }
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .typewriter {
-            font-size: 1.8rem;
-            color: var(--accent);
-            margin-bottom: 3rem;
-            min-height: 2.5rem;
-            font-weight: 600;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 1.2rem 3rem;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: var(--dark);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 50px rgba(0, 255, 136, 0.8);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 2px solid var(--primary);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 255, 136, 0.2);
-            transform: scale(1.1);
-        }
-
-        section {
-            padding: 8rem 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            text-align: center;
-            margin-bottom: 4rem;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--primary);
-            box-shadow: 0 0 20px var(--primary);
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 3rem;
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s;
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        .glass-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 48px rgba(0, 255, 136, 0.3);
-            border-color: var(--primary);
-        }
-
-        .about-content {
-            font-size: 1.3rem;
-            line-height: 2;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .tokenomics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .token-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            transition: all 0.3s;
-        }
-
-        .token-card:hover {
-            transform: scale(1.05);
-            border-color: var(--primary);
-            box-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
-        }
-
-        .token-percentage {
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--primary);
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 1rem;
-        }
-
-        .token-label {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .chart-container {
-            display: flex;
-            justify-content: center;
-            margin: 4rem 0;
-        }
-
-        .donut-chart {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: conic-gradient(
-                var(--primary) 0deg 144deg,
-                var(--accent) 144deg 252deg,
-                var(--secondary) 252deg 324deg,
-                #ff6b00 324deg 360deg
-            );
-            position: relative;
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .donut-chart::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-            height: 60%;
-            background: var(--dark);
-            border-radius: 50%;
-        }
-
-        .roadmap {
-            position: relative;
-        }
-
-        .roadmap::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(180deg, var(--primary), var(--accent));
-            box-shadow: 0 0 20px var(--primary);
-        }
-
-        .roadmap-item {
-            display: flex;
-            margin-bottom: 4rem;
-            position: relative;
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.5s;
-        }
-
-        .roadmap-item.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .roadmap-item:nth-child(even) {
-            flex-direction: row-reverse;
-            transform: translateX(50px);
-        }
-
-        .roadmap-item:nth-child(even).visible {
-            transform: translateX(0);
-        }
-
-        .roadmap-content {
-            width: 45%;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(0, 255, 136, 0.2);
-        }
-
-        .roadmap-quarter {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .roadmap-dot {
-            position: absolute;
-            left: 50%;
-            top: 20px;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 50%;
-            box-shadow: 0 0 30px var(--primary);
-            z-index: 2;
-        }
-
-        .how-to-buy {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .step-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .step-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .step-card:hover::before {
-            opacity: 1;
-        }
-
-        .step-number {
-            font-size: 4rem;
-            font-weight: 900;
-            color: var(--primary);
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 1rem;
-        }
-
-        .step-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .game-section {
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 255, 0.1));
-            padding: 6rem 2rem;
-        }
-
-        .game-container {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .game-stats {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 3rem;
-            gap: 2rem;
-        }
-
-        .stat-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 1.5rem 3rem;
-            border: 2px solid var(--primary);
-            flex: 1;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--primary);
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .game-character {
-            cursor: pointer;
-            transition: transform 0.1s;
-            position: relative;
-            display: inline-block;
-            margin: 2rem 0;
-        }
-
-        .game-character img {
-            max-width: 300px;
-            filter: drop-shadow(0 0 40px rgba(0, 255, 136, 0.6));
-        }
-
-        .game-character:active {
-            transform: scale(0.95);
-        }
-
-        .click-effect {
-            position: absolute;
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--primary);
-            font-family: 'Orbitron', sans-serif;
-            pointer-events: none;
-            animation: floatUp 1s ease-out forwards;
-        }
-
-        @keyframes floatUp {
-            0% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100px);
-            }
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .social-link {
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid var(--primary);
-            transition: all 0.3s;
-            font-size: 2rem;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .social-link:hover {
-            transform: scale(1.2) rotate(10deg);
-            box-shadow: 0 0 40px var(--primary);
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(0, 255, 136, 0.2);
-        }
-
-        .disclaimer {
-            max-width: 800px;
-            margin: 2rem auto;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
-            line-height: 1.8;
-        }
-
-        .counter {
-            display: inline-block;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            color: var(--primary);
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem;
-            }
-
-            .typewriter {
-                font-size: 1.2rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .roadmap::before {
-                left: 20px;
-            }
-
-            .roadmap-item,
-            .roadmap-item:nth-child(even) {
-                flex-direction: column;
-            }
-
-            .roadmap-content {
-                width: 100%;
-                margin-left: 40px;
-            }
-
-            .roadmap-dot {
-                left: 20px;
-            }
-
-            .logo-container img {
-                max-width: 250px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="stars" id="stars"></div>
-
-    <nav>
-        <ul>
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#tokenomics">TOKENOMICS</a></li>
-            <li><a href="#roadmap">ROADMAP</a></li>
-            <li><a href="#game">GAME</a></li>
-            <li><a href="#community">COMMUNITY</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="logo-container">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="MEOW TOKEN" id="heroLogo">
-            </div>
-            <h1>MEOW TOKEN</h1>
-            <div class="typewriter" id="typewriter"></div>
-            <div class="cta-buttons">
-                <a href="https://pump.fun" class="btn btn-primary" target="_blank">BUY ON PUMP.FUN</a>
-                <a href="https://twitter.com" class="btn btn-secondary" target="_blank">TWITTER</a>
-                <a href="https://t.me" class="btn btn-secondary" target="_blank">TELEGRAM</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">ABOUT MEOW</h2>
-            <div class="glass-card">
-                <div class="about-content">
-                    <p>🐱 MEOW TOKEN is not just another meme coin - it's a revolutionary movement bringing the power of cats to the blockchain! Born from the depths of internet culture, MEOW represents the ultimate fusion of cuteness and cryptocurrency.</p>
-                    <br>
-                    <p>With <span class="counter" data-target="1000000">0</span> holders and growing, MEOW is taking over Solana with its purrfect combination of community power, deflationary tokenomics, and pure memetic energy. Join the MEOW revolution and let's make crypto cute again!</p>
-                    <br>
-                    <p>🚀 Launching on Pump.fun, MEOW is designed to reward holders, punish paper hands, and create the most engaged community in crypto. Every transaction feeds the MEOW ecosystem, building liquidity and rewarding loyal holders.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tokenomics">
-        <div class="container">
-            <h2 class="section-title">TOKENOMICS</h2>
-            <div class="chart-container">
-                <div class="donut-chart"></div>
-            </div>
-            <div class="tokenomics-grid">
-                <div class="token-card">
-                    <div class="token-percentage">40%</div>
-                    <div class="token-label">Liquidity Pool</div>
-                </div>
-                <div class="token-card">
-                    <div class="token-percentage">30%</div>
-                    <div class="token-label">Community Rewards</div>
-                </div>
-                <div class="token-card">
-                    <div class="token-percentage">20%</div>
-                    <div class="token-label">Marketing & Development</div>
-                </div>
-                <div class="token-card">
-                    <div class="token-percentage">10%</div>
-                    <div class="token-label">Team & Partnerships</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="roadmap">
-        <div class="container">
-            <h2 class="section-title">ROADMAP</h2>
-            <div class="roadmap">
-                <div class="roadmap-item">
-                    <div class="roadmap-content">
-                        <div class="roadmap-quarter">Q1 2024</div>
-                        <h3>LAUNCH & IGNITION</h3>
-                        <ul style="text-align: left; margin-top: 1rem; line-height: 2;">
-                            <li>🚀 Launch on Pump.fun</li>
-                            <li>📱 Social media explosion</li>
-                            <li>👥 Community building (10K holders)</li>
-                            <li>🎨 NFT collection preview</li>
-                        </ul>
-                    </div>
-                    <div class="roadmap-dot"></div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-content">
-                        <div class="roadmap-quarter">Q2 2024</div>
-                        <h3>EXPANSION</h3>
-                        <ul style="text-align: left; margin-top: 1rem; line-height: 2;">
-                            <li>📈 Major CEX listings</li>
-                            <li>🤝 Strategic partnerships</li>
-                            <li>🎮 MEOW game beta launch</li>
-                            <li>💎 Staking platform release</li>
-                        </ul>
-                    </div>
-                    <div class="roadmap-dot"></div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-content">
-                        <div class="roadmap-quarter">Q3 2024</div>
-                        <h3>ECOSYSTEM GROWTH</h3>
-                        <ul style="text-align: left; margin-top: 1rem; line-height: 2;">
-                            <li>🌍 Global marketing campaign</li>
-                            <li>🏪 MEOW merchandise store</li>
-                            <li>🎪 Metaverse integration</li>
-                            <li>🔥 Token burn events</li>
-                        </ul>
-                    </div>
-                    <div class="roadmap-dot"></div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-content">
-                        <div class="roadmap-quarter">Q4 2024</div>
-                        <h3>DOMINANCE</h3>
-                        <ul style="text-align: left; margin-top: 1rem; line-height: 2;">
-                            <li>🏆 Top 50 meme coin status</li>
-                            <li>🌟 Celebrity endorsements</li>
-                            <li>🎁 Massive holder rewards</li>
-                            <li>🚀 MEOW to the moon!</li>
-                        </ul>
-                    </div>
-                    <div class="roadmap-dot"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="how-to-buy">
-        <div class="container">
-            <h2 class="section-title">HOW TO BUY</h2>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <div class="step-title">Get a Wallet</div>
-                    <p>Download Phantom or Solflare wallet for your browser or mobile device.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <div class="step-title">Buy SOL</div>
-                    <p>Purchase Solana (SOL) from any major exchange and send to your wallet.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <div class="step-title">Go to Pump.fun</div>
-                    <p>Visit Pump.fun and connect your wallet to the platform.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <div class="step-title">Swap for MEOW</div>
-                    <p>Search for MEOW TOKEN and swap your SOL for MEOW. Welcome to the family!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="game-section" id="game">
-        <div class="container">
-            <h2 class="section-title">MEOW CLICKER GAME</h2>
-            <div class="game-container">
-                <div class="game-stats">
-                    <div class="stat-box">
-                        <div class="stat-label">TOKENS</div>
-                        <div class="stat-value" id="tokenCount">0</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">LEVEL</div>
-                        <div class="stat-value" id="level">1</div>
-                    </div>
-                </div>
-                <div class="game-character" id="gameCharacter">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Click me!" id="gameLogo">
-                </div>
-                <p style="font-size: 1.2rem; color: rgba(255,255,255,0.7);">Click the MEOW to earn tokens! Reach 100 tokens to level up!</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="community">
-        <div class="container">
-            <h2 class="section-title">JOIN THE COMMUNITY</h2>
-            <div class="glass-card">
-                <p style="text-align: center; font-size: 1.5rem; margin-bottom: 2rem;">Be part of the most purrfect community in crypto! Connect with thousands of MEOW holders worldwide.</p>
-                <div class="social-links">
-                    <a href="https://twitter.com" class="social-link" target="_blank">𝕏</a>
-                    <a href="https://t.me" class="social-link" target="_blank">✈</a>
-                    <a href="https://discord.com" class="social-link" target="_blank">💬</a>
-                    <a href="https://pump.fun" class="social-link" target="_blank">🚀</a>
-                </div>
-            </div>
-        </div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$SKETCHY — The Doodle Cat Memecoin</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #b44dff;
+  --cyan: #00ffcc;
+  --bg-dark: #0a0015;
+  --bg-mid: #0d0030;
+  --bg-deep: #000a1a;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text: #ffffff;
+  --text-dim: rgba(255, 255, 255, 0.6);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 50%, var(--bg-deep) 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(180, 77, 255, 0.2);
+  padding: 15px 0;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.95);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.5em;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-logo span {
+  font-size: 0.7em;
+  opacity: 0.7;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(180, 77, 255, 0.3);
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.nav-btn:hover {
+  background: var(--accent);
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 0 40px rgba(180, 77, 255, 0.6);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 2px;
+  background: var(--text);
+  transition: all 0.3s ease;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 120px 20px 80px;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-content {
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(180, 77, 255, 0.15);
+  border: 1px solid rgba(180, 77, 255, 0.3);
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 0.85em;
+  color: var(--accent);
+  margin-bottom: 20px;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.hero-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 4em;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  min-height: 1.2em;
+  background: linear-gradient(135deg, #ffffff 0%, var(--accent) 50%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.2em;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 35px;
+  max-width: 500px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), #8800ff);
+  color: #fff;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 30px rgba(180, 77, 255, 0.4);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 50px rgba(180, 77, 255, 0.7);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--cyan);
+  border: 2px solid var(--cyan);
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 255, 204, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 0 40px rgba(0, 255, 204, 0.4);
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.cat-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cat-glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(180, 77, 255, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+.cat-svg {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== STATS BAR ===== */
+.stats-bar {
+  position: relative;
+  z-index: 2;
+  padding: 60px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.stats-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 30px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 40px rgba(180, 77, 255, 0.2);
+}
+
+.stat-icon {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.stat-number {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.5em;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  color: var(--text-dim);
+  font-size: 0.9em;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ===== ABOUT ===== */
+.about-section {
+  padding: 100px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-tag {
+  display: inline-block;
+  background: rgba(180, 77, 255, 0.15);
+  border: 1px solid rgba(180, 77, 255, 0.3);
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 0.85em;
+  color: var(--accent);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.section-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.5em;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.section-subtitle {
+  color: var(--text-dim);
+  font-size: 1.1em;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.about-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 40px 30px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(180, 77, 255, 0.3);
+  box-shadow: 0 10px 40px rgba(180, 77, 255, 0.15);
+}
+
+.about-card:hover::before {
+  opacity: 1;
+}
+
+.about-icon {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.about-card h3 {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2em;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.about-card p {
+  color: var(--text-dim);
+  line-height: 1.6;
+  font-size: 0.95em;
+}
+
+/* ===== CONCEPT ===== */
+.concept-section {
+  padding: 100px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.concept-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.concept-text h3 {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.concept-text p {
+  color: var(--text-dim);
+  line-height: 1.8;
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+.concept-features {
+  list-style: none;
+  margin-top: 25px;
+}
+
+.concept-features li {
+  padding: 10px 0;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95em;
+}
+
+.concept-features li .check {
+  color: var(--cyan);
+  font-size: 1.2em;
+}
+
+.concept-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.concept-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 40px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.concept-card .quote {
+  font-size: 1.4em;
+  font-style: italic;
+  color: var(--accent);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.concept-card .attribution {
+  color: var(--text-dim);
+  font-size: 0.9em;
+}
+
+/* ===== TOKENOMICS ===== */
+.tokenomics-section {
+  padding: 100px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.tokenomics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.pie-chart {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--accent) 0deg 180deg,
+    var(--cyan) 180deg 252deg,
+    #ff6b6b 252deg 306deg,
+    #ffd93d 306deg 360deg
+  );
+  position: relative;
+  margin: 0 auto;
+  box-shadow: 0 0 60px rgba(180, 77, 255, 0.3);
+  animation: rotate-slow 20s linear infinite;
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.pie-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bg-dark), var(--bg-mid));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.pie-center span {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8em;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.pie-center strong {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.4em;
+  color: #fff;
+}
+
+.tokenomics-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.token-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 24px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.token-item:hover {
+  transform: translateX(10px);
+  border-color: var(--accent);
+}
+
+.token-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.token-info {
+  flex: 1;
+}
+
+.token-info h4 {
+  font-size: 1em;
+  margin-bottom: 3px;
+}
+
+.token-info p {
+  color: var(--text-dim);
+  font-size: 0.85em;
+}
+
+.token-pct {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.2em;
+}
+
+/* ===== ROADMAP ===== */
+.roadmap-section {
+  padding: 100px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--accent), var(--cyan), var(--accent));
+  border-radius: 3px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 80px;
+  margin-bottom: 50px;
+}
+
+.timeline-icon {
+  position: absolute;
+  left: 14px;
+  top: 0;
+  width: 35px;
+  height: 35px;
+  background: var(--bg-dark);
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  z-index: 2;
+}
+
+.timeline-icon.completed {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.timeline-icon.current {
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+}
+
+.timeline-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.3s ease;
+}
+
+.timeline-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 5px 30px rgba(180, 77, 255, 0.15);
+  transform: translateX(5px);
+}
+
+.timeline-phase {
+  font-family: 'Orbitron', monospace;
+  color: var(--accent);
+  font-size: 0.8em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.timeline-card h3 {
+  font-size: 1.3em;
+  margin-bottom: 12px;
+}
+
+.timeline-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeline-card ul li {
+  color: var(--text-dim);
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeline-card ul li::before {
+  content: '→';
+  color: var(--cyan);
+  font-weight: bold;
+}
+
+/* ===== HOW TO BUY ===== */
+.howtobuy-section {
+  padding: 100px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.step-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 35px 25px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 15px 50px rgba(180, 77, 255, 0.2);
+}
+
+.step-number {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--accent), #8800ff);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', monospace;
+  font-weight: 800;
+  font-size: 0.9em;
+}
+
+.step-icon {
+  font-size: 3em;
+  margin: 15px 0 20px;
+}
+
+.step-card h3 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+
+.step-card p {
+  color: var(--text-dim);
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+/* ===== GAME SECTION ===== */
+.game-section {
+  padding: 100px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.game-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  padding: 50px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--cyan), var(--accent));
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease infinite;
+}
+
+.game-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.game-subtitle {
+  color: var(--text-dim);
+  margin-bottom: 30px;
+}
+
+.game-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.game-stat {
+  text-align: center;
+}
+
+.game-stat-label {
+  color: var(--text-dim);
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.game-stat-value {
+  font-family: 'Orbitron', monospace;
+  font-size: 2em;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+#clicker-btn {
+  font-size: 100px;
+  cursor: pointer;
+  display: inline-block;
+  user-select: none;
+  transition: transform 0.1s ease;
+  filter: drop-shadow(0 0 20px rgba(180, 77, 255, 0.5));
+  line-height: 1;
+}
+
+#clicker-btn:hover {
+  filter: drop-shadow(0 0 40px rgba(180, 77, 255, 0.8));
+}
+
+#click-effects {
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+}
+
+.level-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.level-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+/* ===== COMMUNITY ===== */
+.community-section {
+  padding: 100px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.social-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+
+.social-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--accent);
+  box-shadow: 0 15px 50px rgba(180, 77, 255, 0.2);
+}
+
+.social-card.twitter:hover {
+  border-color: #1DA1F2;
+  box-shadow: 0 15px 50px rgba(29, 161, 242, 0.3);
+}
+
+.social-card.telegram:hover {
+  border-color: #0088cc;
+  box-shadow: 0 15px 50px rgba(0, 136, 204, 0.3);
+}
+
+.social-card.pump:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 15px 50px rgba(0, 255, 204, 0.3);
+}
+
+.social-icon {
+  font-size: 3em;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.social-card h3 {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+
+.social-card p {
+  color: var(--text-dim);
+  font-size: 0.9em;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  padding: 100px 20px;
+  position
